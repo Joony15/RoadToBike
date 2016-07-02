@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation = "vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.noddy.roadtobike.MountRoad">
+
+    <LinearLayout
+        android:id="@+id/mountRoad_Btn"
+        android:orientation = "vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.15">
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/mountRoad_Map"
+        android:orientation = "horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.85"
+        android:background="#fcbf92">
+        <Button
+            android:id="@+id/test4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/actbutton"
+            android:text="wifi"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/test5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/actbutton"
+            android:text="toilet"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/test6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/actbutton"
+            android:text="light"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/test7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/actbutton"
+            android:text="back"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
