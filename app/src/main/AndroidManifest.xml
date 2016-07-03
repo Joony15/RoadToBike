@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.noddy.roadtobike" >
+    package="com.example.noddy.roadtobike">
 
     <supports-screens
         android:anyDensity="true"
@@ -19,8 +19,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".MainActivity" >
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,6 +30,7 @@
         <activity android:name=".MountRoad" />
         <activity android:name=".SeaRoad" />
         <activity android:name=".WhereBike" >
+
         </activity>
     </application>
 

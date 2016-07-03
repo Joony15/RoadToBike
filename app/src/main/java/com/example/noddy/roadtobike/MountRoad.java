@@ -16,6 +16,7 @@ import com.nhn.android.maps.NMapOverlayItem;
 import com.nhn.android.maps.NMapView;
 import com.nhn.android.maps.maplib.NGeoPoint;
 import com.nhn.android.maps.nmapmodel.NMapError;
+import com.nhn.android.maps.overlay.NMapPOIdata;
 import com.nhn.android.mapviewer.overlay.NMapCalloutOverlay;
 import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
 import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
@@ -28,6 +29,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     private NMapController mMapController;
     NMapOverlayManager mOverlayManager;
     NMapPOIdataOverlay.OnStateChangeListener onPOIdataStateChangeListener;
+    NMapViewerResourceProvider mMapViewerResourceProvider = null;
     private Button Wifi_Btn;
     private Button Toilet_Btn;
     private Button Light_Btn;
@@ -43,10 +45,22 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         mMapView.setClientId(CLIENT_ID);
         Mapcontainer.addView(mMapView);
         mMapView.setClickable(true);
+        mMapViewerResourceProvider = new NMapViewerResourceProvider(this);
+        mOverlayManager = new NMapOverlayManager(this, mMapView,
+                mMapViewerResourceProvider);
 
-        mMapView.setClickable(true);
+        int markerId = NMapPOIflagType.PIN;
 
+        NMapPOIdata poiData = new NMapPOIdata(2, mMapViewerResourceProvider);
+        poiData.beginPOIdata(2);
+        poiData.addPOIitem(127.0630205, 37.5091300, "위치1", markerId, 0);
+        poiData.addPOIitem(127.061, 37.51, "위치2", markerId, 0);
+        poiData.endPOIdata();
 
+        NMapPOIdataOverlay poiDataOverlay
+                = mOverlayManager.createPOIdataOverlay(poiData, null);
+
+        poiDataOverlay.showAllPOIdata(0);
 
 
         /*Button MountRoadpage*/
@@ -63,9 +77,10 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
 
     public void onMapInitHandler(NMapView mapView, NMapError errorInfo) {
         if (errorInfo == null) { // success
-            mMapController.setMapCenter(new NGeoPoint(126.978371, 37.5666091), 11);
+            //mMapController.setMapCenter(new NGeoPoint(126.978371, 37.5666091), 11);
         } else { // fail
-            //Log.e(LOG_TAG, "onMapInitHandler: error=" + errorInfo.toString());
+            android.util.Log.e("NMAP", "onMapInitHandler: error="
+                    + errorInfo.toString());
         }
     }
 
