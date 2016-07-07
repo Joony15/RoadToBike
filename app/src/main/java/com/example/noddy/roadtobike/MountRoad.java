@@ -1,6 +1,10 @@
 package com.example.noddy.roadtobike;
 /*산악도로 페이지*/
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -11,15 +15,19 @@ import android.widget.Toast;
 
 import com.nhn.android.maps.NMapActivity;
 import com.nhn.android.maps.NMapController;
+import com.nhn.android.maps.NMapItemizedOverlay;
 import com.nhn.android.maps.NMapOverlay;
 import com.nhn.android.maps.NMapOverlayItem;
 import com.nhn.android.maps.NMapView;
 import com.nhn.android.maps.maplib.NGeoPoint;
 import com.nhn.android.maps.nmapmodel.NMapError;
 import com.nhn.android.maps.overlay.NMapPOIdata;
+import com.nhn.android.maps.overlay.NMapPathData;
+import com.nhn.android.maps.overlay.NMapPathLineStyle;
 import com.nhn.android.mapviewer.overlay.NMapCalloutOverlay;
 import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
 import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
+import com.nhn.android.mapviewer.overlay.NMapPathDataOverlay;
 
 public class MountRoad extends NMapActivity implements View.OnClickListener,
     NMapView.OnMapStateChangeListener, NMapView.OnMapViewTouchEventListener, NMapOverlayManager.OnCalloutOverlayListener {
@@ -30,18 +38,26 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     NMapOverlayManager mOverlayManager;
     NMapPOIdataOverlay.OnStateChangeListener onPOIdataStateChangeListener;
     NMapViewerResourceProvider mMapViewerResourceProvider = null;
+
     private Button Wifi_Btn;
     private Button Toilet_Btn;
     private Button Light_Btn;
     private Button back_Btn;
     LinearLayout Mapcontainer;
-
+    public NMapPOIdata poiData;
+    public NMapPOIdataOverlay poiDataOverlay;
+    public int markerId;
+    /*마커 이미지 테스트 */
+    Bitmap markerBitmap;
+    Drawable markerTest;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mount_road);
+
         /*for Map APi*/
         Mapcontainer = (LinearLayout) findViewById(R.id.mountRoad_Btn);
         mMapView = new NMapView(this);
+        mMapController = mMapView.getMapController();
         mMapView.setClientId(CLIENT_ID);
         Mapcontainer.addView(mMapView);
         mMapView.setClickable(true);
@@ -49,18 +65,29 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         mOverlayManager = new NMapOverlayManager(this, mMapView,
                 mMapViewerResourceProvider);
 
-        int markerId = NMapPOIflagType.PIN;
+        mMapView.setOnMapStateChangeListener(this);
 
-        NMapPOIdata poiData = new NMapPOIdata(2, mMapViewerResourceProvider);
-        poiData.beginPOIdata(2);
-        poiData.addPOIitem(127.0630205, 37.5091300, "위치1", markerId, 0);
-        poiData.addPOIitem(127.061, 37.51, "위치2", markerId, 0);
-        poiData.endPOIdata();
+        /*
+        * poiData.addPOIitem(127.0630205, 37.5091300, "위치1", markerTest, 0);
+        * markerTest이 변수가 들어가는 부분인 아마 마커관련된거 같음
+        * 아래보이는 두줄이용해서 markerTest에 getResources(),R.drawable.ic_net_wif를 이용해서
+        * 변수에 내가 원하는 이미지를 넣음
+        * */
+        markerBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.ic_net_wif);
+        markerTest = new BitmapDrawable(markerBitmap);
 
-        NMapPOIdataOverlay poiDataOverlay
-                = mOverlayManager.createPOIdataOverlay(poiData, null);
 
-        poiDataOverlay.showAllPOIdata(0);
+        /*경로*/
+        markerId = NMapPOIflagType.PIN;
+        NMapPathData pathData = new NMapPathData(9);
+        pathData.initPathData();
+        pathData.addPathPoint(127.108099, 37.366034, NMapPathLineStyle.TYPE_SOLID);
+        pathData.addPathPoint(127.105933, 37.365621, NMapPathLineStyle.TYPE_DASH);
+        pathData.endPathData();
+        NMapPathDataOverlay pathDataOverlay = mOverlayManager.createPathDataOverlay(pathData);
+        pathDataOverlay.showAllPathData(0);
+
+
 
 
         /*Button MountRoadpage*/
@@ -77,10 +104,10 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
 
     public void onMapInitHandler(NMapView mapView, NMapError errorInfo) {
         if (errorInfo == null) { // success
-            //mMapController.setMapCenter(new NGeoPoint(126.978371, 37.5666091), 11);
+            Toast.makeText(MountRoad.this, "(테스트)지도 초기화 성공.", Toast.LENGTH_SHORT).show();
+            //mMapController.setMapCenter(new NGeoPoint(127.0630205, 37.5091300), 11);
         } else { // fail
-            android.util.Log.e("NMAP", "onMapInitHandler: error="
-                    + errorInfo.toString());
+            //Toast.makeText(MountRoad.this, "(테스트)지도 초기화 실패.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -111,6 +138,13 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
             case R.id.wifi_btn:
                 //여기다 버튼 이벤트 코딩
                 Toast.makeText(MountRoad.this, "(테스트)와이파이정상적인 클릭.", Toast.LENGTH_SHORT).show();
+                poiData = new NMapPOIdata(2, mMapViewerResourceProvider);
+                poiData.beginPOIdata(2);
+                poiData.addPOIitem(127.108099, 37.366034, "위치1", markerTest, 0);
+                poiData.addPOIitem(127.105933, 37.365621, "위치2", markerId,0);
+                poiData.endPOIdata();
+                poiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
+               //poiDataOverlay.showAllPOIdata(0);
                 break;
             case R.id.toilet_btn:
                 ////여기다 버튼 이벤트 코딩
