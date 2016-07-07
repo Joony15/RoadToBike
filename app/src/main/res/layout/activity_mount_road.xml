@@ -11,43 +11,45 @@
         android:orientation = "vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.15">
+        android:layout_weight="0.1">
     </LinearLayout>
     <LinearLayout
         android:id="@+id/mountRoad_Map"
         android:orientation = "horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.85"
+        android:layout_weight="0.9"
         android:background="#fcbf92">
         <Button
             android:id="@+id/wifi_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/actbutton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
             android:text="wifi"
+
             android:layout_weight="1"/>
         <Button
             android:id="@+id/toilet_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/actbutton"
             android:text="toilet"
             android:layout_weight="1"/>
         <Button
             android:id="@+id/light_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/actbutton"
             android:text="light"
             android:layout_weight="1"/>
         <Button
             android:id="@+id/back_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/actbutton"
             android:text="back"
