@@ -1,10 +1,12 @@
 package com.example.noddy.roadtobike;
 /*산악도로 페이지*/
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -14,8 +16,10 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.nhn.android.maps.NMapActivity;
+import com.nhn.android.maps.NMapCompassManager;
 import com.nhn.android.maps.NMapController;
 import com.nhn.android.maps.NMapItemizedOverlay;
+import com.nhn.android.maps.NMapLocationManager;
 import com.nhn.android.maps.NMapOverlay;
 import com.nhn.android.maps.NMapOverlayItem;
 import com.nhn.android.maps.NMapView;
@@ -25,16 +29,20 @@ import com.nhn.android.maps.overlay.NMapPOIdata;
 import com.nhn.android.maps.overlay.NMapPathData;
 import com.nhn.android.maps.overlay.NMapPathLineStyle;
 import com.nhn.android.mapviewer.overlay.NMapCalloutOverlay;
+import com.nhn.android.mapviewer.overlay.NMapMyLocationOverlay;
 import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
 import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
 import com.nhn.android.mapviewer.overlay.NMapPathDataOverlay;
 
 public class MountRoad extends NMapActivity implements View.OnClickListener,
-    NMapView.OnMapStateChangeListener, NMapView.OnMapViewTouchEventListener, NMapOverlayManager.OnCalloutOverlayListener {
+        NMapView.OnMapStateChangeListener, NMapView.OnMapViewTouchEventListener, NMapOverlayManager.OnCalloutOverlayListener {
 
     private static final String CLIENT_ID = "QYEl8bJjw912O8_ZRLJ9";
     private NMapView mMapView = null;
     private NMapController mMapController;
+    private NMapMyLocationOverlay mMyLocationOverlay;
+    private NMapLocationManager mMapLocationManager;
+    private NMapCompassManager mMapCompassManager;
     NMapOverlayManager mOverlayManager;
     NMapPOIdataOverlay.OnStateChangeListener onPOIdataStateChangeListener;
     NMapViewerResourceProvider mMapViewerResourceProvider = null;
@@ -76,7 +84,15 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         markerBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.ic_net_wif);
         markerTest = new BitmapDrawable(markerBitmap);
         markerId = NMapPOIflagType.PIN;
+        /*my location*/
+        mMapLocationManager = new NMapLocationManager(this);
+        mMapLocationManager.enableMyLocation(false);
+        mMapLocationManager.setOnLocationChangeListener(onMyLocationChangeListener);
 
+
+
+        // create my location overlay
+        mMyLocationOverlay = mOverlayManager.createMyLocationOverlay(mMapLocationManager, mMapCompassManager);
         /*MountRoute에서 경로를 위해 불러온 함수*/
         mMountRoute = new MountRoute();
         mMountRoute.ExcuteRoute(mOverlayManager);
@@ -111,6 +127,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         if (errorInfo == null) { // success
             Toast.makeText(MountRoad.this, "(테스트)지도 초기화 성공.", Toast.LENGTH_SHORT).show();
             //mMapController.setMapCenter(new NGeoPoint(127.0630205, 37.5091300), 11);
+            //startMyLocation();
         } else { // fail
             //Toast.makeText(MountRoad.this, "(테스트)지도 초기화 실패.", Toast.LENGTH_SHORT).show();
         }
@@ -143,8 +160,8 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
             case R.id.wifi_btn:
                 //여기다 버튼 이벤트 코딩
                 Toast.makeText(MountRoad.this, "(테스트)와이파이정상적인 클릭.", Toast.LENGTH_SHORT).show();
-
-               //poiDataOverlay.showAllPOIdata(0);
+                startMyLocation();
+                //poiDataOverlay.showAllPOIdata(0);
                 break;
             case R.id.toilet_btn:
                 ////여기다 버튼 이벤트 코딩
@@ -162,7 +179,58 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
                 break;
         }
     }
+    private void startMyLocation() {
 
+        if (mMyLocationOverlay != null) {
+            if (!mOverlayManager.hasOverlay(mMyLocationOverlay)) {
+                mOverlayManager.addOverlay(mMyLocationOverlay);
+            }
+
+            if (mMapLocationManager.isMyLocationEnabled()) {
+
+                if (!mMapView.isAutoRotateEnabled()) {
+                    mMyLocationOverlay.setCompassHeadingVisible(true);
+
+                    mMapCompassManager.enableCompass();
+
+                    mMapView.setAutoRotateEnabled(true, false);
+
+                    Mapcontainer.requestLayout();
+                } else {
+                    stopMyLocation();
+                }
+
+                mMapView.postInvalidate();
+            } else {
+                boolean isMyLocationEnabled = mMapLocationManager.enableMyLocation(true);
+                if (!isMyLocationEnabled) {
+                    Toast.makeText(MountRoad.this, "Please enable a My Location source in system settings",
+                            Toast.LENGTH_LONG).show();
+
+                    Intent goToSettings = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivity(goToSettings);
+
+                    return;
+                }
+            }
+        }
+    }
+
+    private void stopMyLocation() {
+        if (mMyLocationOverlay != null) {
+            mMapLocationManager.disableMyLocation();
+
+            if (mMapView.isAutoRotateEnabled()) {
+                mMyLocationOverlay.setCompassHeadingVisible(false);
+
+                mMapCompassManager.disableCompass();
+
+                mMapView.setAutoRotateEnabled(false, false);
+
+                Mapcontainer.requestLayout();
+            }
+        }
+    }
     @Override
     public NMapCalloutOverlay onCreateCalloutOverlay(NMapOverlay nMapOverlay, NMapOverlayItem nMapOverlayItem, Rect rect) {
         return null;
@@ -197,4 +265,32 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     public void onSingleTapUp(NMapView nMapView, MotionEvent motionEvent) {
 
     }
+    /* MyLocation Listener */
+    private final NMapLocationManager.OnLocationChangeListener onMyLocationChangeListener = new NMapLocationManager.OnLocationChangeListener() {
+
+        @Override
+        public boolean onLocationChanged(NMapLocationManager locationManager, NGeoPoint myLocation) {
+
+            if (mMapController != null) {
+                mMapController.animateTo(myLocation);
+            }
+            return true;
+        }
+
+        @Override
+        public void onLocationUpdateTimeout(NMapLocationManager locationManager) {
+
+            Toast.makeText(MountRoad.this, "Your current location is temporarily unavailable.", Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onLocationUnavailableArea(NMapLocationManager locationManager, NGeoPoint myLocation) {
+
+            Toast.makeText(MountRoad.this, "Your current location is unavailable area.", Toast.LENGTH_LONG).show();
+
+            stopMyLocation();
+        }
+
+    };
+
 }
