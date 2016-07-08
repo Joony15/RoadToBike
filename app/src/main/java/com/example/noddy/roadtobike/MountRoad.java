@@ -88,20 +88,17 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         mMapLocationManager = new NMapLocationManager(this);
         mMapLocationManager.enableMyLocation(false);
         mMapLocationManager.setOnLocationChangeListener(onMyLocationChangeListener);
-
-
-
-        // create my location overlay
         mMyLocationOverlay = mOverlayManager.createMyLocationOverlay(mMapLocationManager, mMapCompassManager);
+
         /*MountRoute에서 경로를 위해 불러온 함수*/
         mMountRoute = new MountRoute();
-        mMountRoute.ExcuteRoute(mOverlayManager);
+        mMountRoute.ExcuteRoute(mOverlayManager,mMapView);
 
         /*주요 경로 마커*/
         poiData = new NMapPOIdata(7, mMapViewerResourceProvider);
         poiData.beginPOIdata(7);
         poiData.addPOIitem(128.2599500, 37.8741320, "상남", markerId, 0);
-        poiData.addPOIitem(128.3109455, 37.8749729, "미산계곡", markerId,0);
+        poiData.addPOIitem(128.31100, 37.87288, "미산계곡", markerId,0);
         poiData.addPOIitem(128.452932, 37.824684,"칡소 폭포",markerId,0);
         poiData.addPOIitem(128.5133257, 37.8799347, "구룡령", markerId, 0);
         poiData.addPOIitem(128.5033933, 37.9964677, "조침터미널", markerId,0);
@@ -126,7 +123,9 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     public void onMapInitHandler(NMapView mapView, NMapError errorInfo) {
         if (errorInfo == null) { // success
             Toast.makeText(MountRoad.this, "(테스트)지도 초기화 성공.", Toast.LENGTH_SHORT).show();
-            //mMapController.setMapCenter(new NGeoPoint(127.0630205, 37.5091300), 11);
+            stopMyLocation();
+
+            mMapController.setMapCenter(new NGeoPoint(128.2599500, 37.8741320), 11);
             //startMyLocation();
         } else { // fail
             //Toast.makeText(MountRoad.this, "(테스트)지도 초기화 실패.", Toast.LENGTH_SHORT).show();
@@ -165,6 +164,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
                 break;
             case R.id.toilet_btn:
                 ////여기다 버튼 이벤트 코딩
+                stopMyLocation();
                 Toast.makeText(MountRoad.this, "(테스트)화장실정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 break;
 
