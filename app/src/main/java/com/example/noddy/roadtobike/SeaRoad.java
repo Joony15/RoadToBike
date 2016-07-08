@@ -38,7 +38,7 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
     NMapOverlayManager mOverlayManager;
     NMapPOIdataOverlay.OnStateChangeListener onPOIdataStateChangeListener;
     NMapViewerResourceProvider mMapViewerResourceProvider = null;
-
+    SeaRoute mSeaRoute;
     private Button Wifi_Btn;
     private Button Toilet_Btn;
     private Button Light_Btn;
@@ -75,28 +75,11 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         * */
         markerBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.ic_net_wif);
         markerTest = new BitmapDrawable(markerBitmap);
-
-
-
-        /*경로Test*/
         markerId = NMapPOIflagType.PIN;
-        NMapPathData pathData = new NMapPathData(12);
-        pathData.initPathData();
-        pathData.addPathPoint(128.3755381, 38.5866220, NMapPathLineStyle.TYPE_SOLID);//통일전망대(출발)
-        pathData.addPathPoint(128.4742254, 38.4014101, 0);//북천철교
-        pathData.addPathPoint(128.5659670, 38.2528608, 0);//봉포해변
-        pathData.addPathPoint(128.6015368, 38.2118321, 0);//영금정
-        pathData.addPathPoint(128.6837662, 38.0579154, 0);//동호해변
-        pathData.addPathPoint(128.8078130, 37.9186260, 0);//지경공원
-        pathData.addPathPoint(128.9082081, 37.8054954, 0);//경포해변
-        pathData.addPathPoint(129.0317609, 37.6925307, 0);//정동진
-        pathData.addPathPoint(129.0900515, 37.5940179, 0);//망상해변
-        pathData.addPathPoint(129.1600848, 37.4791928, 0);//추암촛대바위
-        pathData.addPathPoint(129.1965547, 37.4134425, 0);//한재공원
-        pathData.addPathPoint(129.3440000, 37.2342850, 0);//임원
-        pathData.endPathData();
-        NMapPathDataOverlay pathDataOverlay = mOverlayManager.createPathDataOverlay(pathData);
-        pathDataOverlay.showAllPathData(12);
+
+        /*MountRoute에서 경로를 위해 불러온 함수*/
+        mSeaRoute = new SeaRoute();
+        mSeaRoute.ExcuteRoute(mOverlayManager);
 
         /*주요 경로 마커*/
         poiData = new NMapPOIdata(12, mMapViewerResourceProvider);
@@ -115,7 +98,6 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         poiData.addPOIitem(129.3440000, 37.2342850, "임원", markerId, 0);
         poiData.endPOIdata();
         poiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
-
 
         /*Button MountRoadpage*/
         Wifi_Btn = (Button) findViewById(R.id.seawifi_btn);

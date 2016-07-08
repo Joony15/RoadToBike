@@ -1,5 +1,10 @@
 package com.example.noddy.roadtobike;
-/*메인 페이지*/
+/*
+*
+* 메인 페이지
+*
+*
+*/
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

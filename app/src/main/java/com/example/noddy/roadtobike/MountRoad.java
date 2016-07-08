@@ -38,7 +38,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     NMapOverlayManager mOverlayManager;
     NMapPOIdataOverlay.OnStateChangeListener onPOIdataStateChangeListener;
     NMapViewerResourceProvider mMapViewerResourceProvider = null;
-
+    MountRoute mMountRoute;
     private Button Wifi_Btn;
     private Button Toilet_Btn;
     private Button Light_Btn;
@@ -75,33 +75,18 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         * */
         markerBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.ic_net_wif);
         markerTest = new BitmapDrawable(markerBitmap);
-
-
-
-        /*경로Test*/
         markerId = NMapPOIflagType.PIN;
-        NMapPathData pathData = new NMapPathData(9);
-        pathData.initPathData();
-        pathData.addPathPoint(128.2599500, 37.8741320, NMapPathLineStyle.TYPE_SOLID);//상남(출발)
-        pathData.addPathPoint(128.27435, 37.870822, 0);
-        pathData.addPathPoint(128.269329, 37.879325, 0);
-        pathData.addPathPoint(128.281002, 37.875124, 0);
-        pathData.addPathPoint(128.3109455, 37.8749729, 0);//미산계곡
-        pathData.addPathPoint(128.5133257, 37.8799347, 0);//구룡령
-        pathData.addPathPoint(128.5033933, 37.9964677, 0);//조침령터널
-        pathData.addPathPoint(128.4081958, 37.9634730, 0);//진동계곡
-        pathData.addPathPoint(128.3375473, 37.9441227, 0);//방동계곡
-        pathData.addPathPoint(128.2629901, 37.8808571, 0);//오미재
-        pathData.addPathPoint(128.2599500, 37.8741320, NMapPathLineStyle.TYPE_SOLID);//상남(도착)
-        pathData.endPathData();
-        NMapPathDataOverlay pathDataOverlay = mOverlayManager.createPathDataOverlay(pathData);
-        pathDataOverlay.showAllPathData(7);
+
+        /*MountRoute에서 경로를 위해 불러온 함수*/
+        mMountRoute = new MountRoute();
+        mMountRoute.ExcuteRoute(mOverlayManager);
 
         /*주요 경로 마커*/
         poiData = new NMapPOIdata(7, mMapViewerResourceProvider);
         poiData.beginPOIdata(7);
         poiData.addPOIitem(128.2599500, 37.8741320, "상남", markerId, 0);
         poiData.addPOIitem(128.3109455, 37.8749729, "미산계곡", markerId,0);
+        poiData.addPOIitem(128.452932, 37.824684,"칡소 폭포",markerId,0);
         poiData.addPOIitem(128.5133257, 37.8799347, "구룡령", markerId, 0);
         poiData.addPOIitem(128.5033933, 37.9964677, "조침터미널", markerId,0);
         poiData.addPOIitem(128.4081958, 37.9634730, "진동계곡", markerId, 0);
@@ -109,7 +94,6 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         poiData.addPOIitem(128.2629901, 37.8808571, "오미재", markerId, 0);
         poiData.endPOIdata();
         poiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
-
 
         /*Button MountRoadpage*/
         Wifi_Btn = (Button) findViewById(R.id.wifi_btn);
