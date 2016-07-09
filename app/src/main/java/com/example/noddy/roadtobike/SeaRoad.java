@@ -99,17 +99,17 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         poiData = new NMapPOIdata(12, mMapViewerResourceProvider);
         poiData.beginPOIdata(12);
         poiData.addPOIitem(128.3755381, 38.5866220, "통일전망대", markerId, 0);
-        poiData.addPOIitem(128.4742254, 38.4014101, "북천철교", markerId,0);
-        poiData.addPOIitem(128.5659670, 38.2528608, "봉포해변", markerId, 0);
-        poiData.addPOIitem(128.6015368, 38.2118321, "영금정", markerId,0);
-        poiData.addPOIitem(128.6837662, 38.0579154, "동호해변", markerId, 0);
-        poiData.addPOIitem(128.8078130, 37.9186260, "지경공원", markerId,0);
-        poiData.addPOIitem(128.9082081, 37.8054954, "경포해변", markerId, 0);
-        poiData.addPOIitem(129.0317609, 37.6925307, "정동진", markerId, 0);
-        poiData.addPOIitem(129.0900515, 37.5940179, "망상해변", markerId, 0);
-        poiData.addPOIitem(129.1600848, 37.4791928, "추암촛대바위", markerId, 0);
-        poiData.addPOIitem(129.1965547, 37.4134425, "한재공원", markerId, 0);
-        poiData.addPOIitem(129.3440000, 37.2342850, "임원", markerId, 0);
+        poiData.addPOIitem(128.46427, 38.39845, "북천철교", markerId,0);
+        poiData.addPOIitem(128.56326, 38.25101, "봉포해변", markerId, 0);
+        poiData.addPOIitem(128.56669, 38.20455, "영금정", markerId,0);
+        poiData.addPOIitem(128.66128, 38.04440, "동호해변", markerId, 0);
+        poiData.addPOIitem(128.80650, 37.91828, "지경공원", markerId,0);
+        poiData.addPOIitem(128.87452, 37.78440, "경포해변", markerId, 0);
+        poiData.addPOIitem(129.00814, 37.68336, "정동진", markerId, 0);
+        poiData.addPOIitem(129.08831, 37.59211, "망상해변", markerId, 0);
+        poiData.addPOIitem(129.14318, 37.46819, "추암촛대바위", markerId, 0);
+        poiData.addPOIitem(129.19751, 37.41380, "한재공원", markerId, 0);
+        poiData.addPOIitem(129.33984, 37.23639, "임원", markerId, 0);
         poiData.endPOIdata();
         poiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
 
@@ -130,7 +130,7 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
             Toast.makeText(SeaRoad.this, "(테스트)지도 초기화 성공.", Toast.LENGTH_SHORT).show();
             stopMyLocation();
 
-            mMapController.setMapCenter(new NGeoPoint(128.8078130, 37.9186260), 5);
+            mMapController.setMapCenter(new NGeoPoint(128.46427, 38.39845), 5);
             //startMyLocation();
         } else { // fail
             //Toast.makeText(MountRoad.this, "(테스트)지도 초기화 실패.", Toast.LENGTH_SHORT).show();
