@@ -93,25 +93,10 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
 
         /*MountRoute에서 경로를 위해 불러온 함수*/
         mSeaRoute = new SeaRoute();
-        mSeaRoute.ExcuteRoute(mOverlayManager,mMapView);
+        mSeaRoute.ExcuteSeaRoute(mOverlayManager,mMapView);
 
-        /*주요 경로 마커*/
-        poiData = new NMapPOIdata(12, mMapViewerResourceProvider);
-        poiData.beginPOIdata(12);
-        poiData.addPOIitem(128.3755381, 38.5866220, "통일전망대", markerId, 0);
-        poiData.addPOIitem(128.46427, 38.39845, "북천철교", markerId,0);
-        poiData.addPOIitem(128.56326, 38.25101, "봉포해변", markerId, 0);
-        poiData.addPOIitem(128.56669, 38.20455, "영금정", markerId,0);
-        poiData.addPOIitem(128.66128, 38.04440, "동호해변", markerId, 0);
-        poiData.addPOIitem(128.80650, 37.91828, "지경공원", markerId,0);
-        poiData.addPOIitem(128.87452, 37.78440, "경포해변", markerId, 0);
-        poiData.addPOIitem(129.00814, 37.68336, "정동진", markerId, 0);
-        poiData.addPOIitem(129.08831, 37.59211, "망상해변", markerId, 0);
-        poiData.addPOIitem(129.14318, 37.46819, "추암촛대바위", markerId, 0);
-        poiData.addPOIitem(129.19751, 37.41380, "한재공원", markerId, 0);
-        poiData.addPOIitem(129.33984, 37.23639, "임원", markerId, 0);
-        poiData.endPOIdata();
-        poiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
+        /*SeaRoute에서 마커를 위해 불러온 함수*/
+        mSeaRoute.ExcuteSeaPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
 
         /*Button MountRoadpage*/
         Wifi_Btn = (Button) findViewById(R.id.seawifi_btn);

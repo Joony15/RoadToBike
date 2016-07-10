@@ -1,9 +1,13 @@
 package com.example.noddy.roadtobike;
 
+import android.graphics.drawable.Drawable;
+
 import com.nhn.android.maps.NMapView;
+import com.nhn.android.maps.overlay.NMapPOIdata;
 import com.nhn.android.maps.overlay.NMapPathData;
 import com.nhn.android.maps.overlay.NMapPathLineStyle;
 import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
+import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
 import com.nhn.android.mapviewer.overlay.NMapPathDataOverlay;
 
 /**
@@ -12,7 +16,11 @@ import com.nhn.android.mapviewer.overlay.NMapPathDataOverlay;
  */
 public class MountRoute {
 
-    public void ExcuteRoute(NMapOverlayManager mOverlayManager,NMapView MapViewForContext)
+    public NMapPOIdata poiData,poiDataChecked;
+    public NMapPOIdataOverlay mountPoiDataOverlay;
+    private int FlagForMarker, Mountmarker;
+
+    public void ExcuteMountRoute(NMapOverlayManager mOverlayManager,NMapView MapViewForContext)
     {
         /*산악경로*/
         NMapPathLineStyle pathLineStyle = new NMapPathLineStyle(MapViewForContext.getContext());
@@ -73,5 +81,35 @@ public class MountRoute {
         pathData.setPathLineStyle(pathLineStyle);
         NMapPathDataOverlay pathDataOverlay = mOverlayManager.createPathDataOverlay(pathData);
         pathDataOverlay.showAllPathData(7);
+    }
+
+    public void ExcuteMountPoint(NMapOverlayManager mOverlayManager, NMapViewerResourceProvider mMapViewerResourceProvider, int markeRoute)
+    {
+        Mountmarker = markeRoute;
+        /*주요 경로 마커*/
+        poiData = new NMapPOIdata(7, mMapViewerResourceProvider);
+        poiData.beginPOIdata(7);
+        poiData.addPOIitem(128.2599500, 37.8741320, "상남", markeRoute, 0);
+        poiData.addPOIitem(128.31100, 37.87288, "미산계곡", markeRoute,0);
+        poiData.addPOIitem(128.452932, 37.824684,"칡소 폭포",markeRoute,0);
+        poiData.addPOIitem(128.5133257, 37.8799347, "구룡령", markeRoute, 0);
+        poiData.addPOIitem(128.5033933, 37.9964677, "조침터미널", markeRoute,0);
+        poiData.addPOIitem(128.4081958, 37.9634730, "진동계곡", markeRoute, 0);
+        poiData.addPOIitem(128.3375473, 37.9441227, "방동계곡", markeRoute,0);
+        poiData.addPOIitem(128.2629901, 37.8808571, "오미재", markeRoute, 0);
+        poiData.endPOIdata();
+        mountPoiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
+    }
+    public void CheckMylocationFromMarker(NMapOverlayManager mOverlayManager, NMapViewerResourceProvider mMapViewerResourceProvider,  Drawable Mountdistance)
+    {
+        if(true)
+        {
+            poiDataChecked = new NMapPOIdata(1, mMapViewerResourceProvider);
+            poiDataChecked.beginPOIdata(1);
+            poiDataChecked.addPOIitem(128.2629901, 37.8808571, "거리계산테스트용", Mountdistance, 0);
+            poiDataChecked.endPOIdata();
+            mountPoiDataOverlay = mOverlayManager.createPOIdataOverlay(poiDataChecked, null);
+
+        }
     }
 }

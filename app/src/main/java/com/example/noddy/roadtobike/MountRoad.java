@@ -23,6 +23,7 @@ import com.nhn.android.maps.NMapLocationManager;
 import com.nhn.android.maps.NMapOverlay;
 import com.nhn.android.maps.NMapOverlayItem;
 import com.nhn.android.maps.NMapView;
+import com.nhn.android.maps.maplib.NGPoint;
 import com.nhn.android.maps.maplib.NGeoPoint;
 import com.nhn.android.maps.nmapmodel.NMapError;
 import com.nhn.android.maps.overlay.NMapPOIdata;
@@ -36,6 +37,7 @@ import com.nhn.android.mapviewer.overlay.NMapPathDataOverlay;
 
 public class MountRoad extends NMapActivity implements View.OnClickListener,
         NMapView.OnMapStateChangeListener, NMapView.OnMapViewTouchEventListener, NMapOverlayManager.OnCalloutOverlayListener {
+
 
     private static final String CLIENT_ID = "QYEl8bJjw912O8_ZRLJ9";
     private NMapView mMapView = null;
@@ -51,13 +53,19 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     private Button Toilet_Btn;
     private Button Light_Btn;
     private Button back_Btn;
+    //마커 경로 테스트용도
+    private double testInt = 0;
+    private NGeoPoint myLocation, testFromDistance;
+
     LinearLayout Mapcontainer;
-    public NMapPOIdata poiData;
+    public NMapPOIdata tpoiData;
     public NMapPOIdataOverlay poiDataOverlay;
     public int markerId;
-    /*마커 이미지 테스트 */
+    //마커 이미지 테스트
     Bitmap markerBitmap;
     Drawable markerTest;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mount_road);
@@ -72,7 +80,6 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         mMapViewerResourceProvider = new NMapViewerResourceProvider(this);
         mOverlayManager = new NMapOverlayManager(this, mMapView,
                 mMapViewerResourceProvider);
-
         mMapView.setOnMapStateChangeListener(this);
 
         /*
@@ -80,10 +87,11 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         * markerTest이 변수가 들어가는 부분인 아마 마커관련된거 같음
         * 아래보이는 두줄이용해서 markerTest에 getResources(),R.drawable.ic_net_wif를 이용해서
         * 변수에 내가 원하는 이미지를 넣음
-        * */
+        */
         markerBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.ic_net_wif);
         markerTest = new BitmapDrawable(markerBitmap);
         markerId = NMapPOIflagType.PIN;
+
         /*my location*/
         mMapLocationManager = new NMapLocationManager(this);
         mMapLocationManager.enableMyLocation(false);
@@ -92,21 +100,25 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
 
         /*MountRoute에서 경로를 위해 불러온 함수*/
         mMountRoute = new MountRoute();
-        mMountRoute.ExcuteRoute(mOverlayManager,mMapView);
+        mMountRoute.ExcuteMountRoute(mOverlayManager,mMapView);
 
-        /*주요 경로 마커*/
-        poiData = new NMapPOIdata(7, mMapViewerResourceProvider);
-        poiData.beginPOIdata(7);
-        poiData.addPOIitem(128.2599500, 37.8741320, "상남", markerId, 0);
-        poiData.addPOIitem(128.31100, 37.87288, "미산계곡", markerId,0);
-        poiData.addPOIitem(128.452932, 37.824684,"칡소 폭포",markerId,0);
-        poiData.addPOIitem(128.5133257, 37.8799347, "구룡령", markerId, 0);
-        poiData.addPOIitem(128.5033933, 37.9964677, "조침터미널", markerId,0);
-        poiData.addPOIitem(128.4081958, 37.9634730, "진동계곡", markerId, 0);
-        poiData.addPOIitem(128.3375473, 37.9441227, "방동계곡", markerId,0);
-        poiData.addPOIitem(128.2629901, 37.8808571, "오미재", markerId, 0);
-        poiData.endPOIdata();
-        poiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
+        //현재 나의 위치 받아오기
+        myLocation = new NGeoPoint();
+        myLocation = mMapLocationManager.getMyLocation();
+
+        testFromDistance = new NGeoPoint(126.73316, 37.39391);
+        if(myLocation != null)
+        {
+            testInt = myLocation.getDistance(testFromDistance,myLocation);
+        }
+        else
+        {
+            Toast.makeText(MountRoad.this, "(테스트)지도 초기화 실패.", Toast.LENGTH_SHORT).show();
+
+        }
+
+        /*MountRoute에서 마커를 위해 불러온 함수*/
+        mMountRoute.ExcuteMountPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
 
         /*Button MountRoadpage*/
         Wifi_Btn = (Button) findViewById(R.id.wifi_btn);
@@ -122,13 +134,12 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
 
     public void onMapInitHandler(NMapView mapView, NMapError errorInfo) {
         if (errorInfo == null) { // success
-            Toast.makeText(MountRoad.this, "(테스트)지도 초기화 성공.", Toast.LENGTH_SHORT).show();
-            stopMyLocation();
+           //Toast.makeText(MountRoad.this, "(테스트)지도 초기화 성공.", Toast.LENGTH_SHORT).show();
 
             mMapController.setMapCenter(new NGeoPoint(128.2599500, 37.8741320), 11);
-            //startMyLocation();
+
         } else { // fail
-            //Toast.makeText(MountRoad.this, "(테스트)지도 초기화 실패.", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(MountRoad.this, "(테스트)지도 초기화 실패.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -171,6 +182,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
             case R.id.light_btn:
                 //여기다 버튼 이벤트 코딩
                 Toast.makeText(MountRoad.this, "(테스트)전기시간정상적인 클릭.", Toast.LENGTH_SHORT).show();
+                mMountRoute.CheckMylocationFromMarker(mOverlayManager,mMapViewerResourceProvider,markerTest);
                 break;
 
             case R.id.back_btn:
@@ -271,8 +283,19 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         @Override
         public boolean onLocationChanged(NMapLocationManager locationManager, NGeoPoint myLocation) {
 
+            /*위치변경될 때 이벤트 발생*/
             if (mMapController != null) {
                 mMapController.animateTo(myLocation);
+                Toast.makeText(MountRoad.this, "(테스트)위치 변화 테스트.", Toast.LENGTH_SHORT).show();
+                if(testInt > 10.0)
+                {
+                    tpoiData = new NMapPOIdata(1, mMapViewerResourceProvider);
+                    tpoiData.beginPOIdata(1);
+                    tpoiData.addPOIitem(testFromDistance, "거리계산테스트용", markerTest, 0);
+                    tpoiData.endPOIdata();
+                    poiDataOverlay = mOverlayManager.createPOIdataOverlay(tpoiData, null);
+
+                }
             }
             return true;
         }

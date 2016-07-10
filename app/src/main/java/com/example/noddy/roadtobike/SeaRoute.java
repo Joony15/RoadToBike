@@ -1,9 +1,11 @@
 package com.example.noddy.roadtobike;
 
 import com.nhn.android.maps.NMapView;
+import com.nhn.android.maps.overlay.NMapPOIdata;
 import com.nhn.android.maps.overlay.NMapPathData;
 import com.nhn.android.maps.overlay.NMapPathLineStyle;
 import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
+import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
 import com.nhn.android.mapviewer.overlay.NMapPathDataOverlay;
 
 /**
@@ -11,9 +13,14 @@ import com.nhn.android.mapviewer.overlay.NMapPathDataOverlay;
  *해안경로 paht를 관리하기 위한 클래스
  */
 public class SeaRoute {
-    public void ExcuteRoute(NMapOverlayManager mOverlayManager, NMapView MapViewForContext)
+
+    public NMapPOIdata seaPoiData;
+    public NMapPOIdataOverlay seaPoiDataOverlay;
+
+    /*해안경로*/
+    public void ExcuteSeaRoute(NMapOverlayManager mOverlayManager, NMapView MapViewForContext)
     {
-        /*해안경로*/
+
         NMapPathLineStyle pathLineStyle = new NMapPathLineStyle(MapViewForContext.getContext());
         NMapPathData pathData = new NMapPathData(104);
         pathData.initPathData();
@@ -71,5 +78,28 @@ public class SeaRoute {
         pathData.setPathLineStyle(pathLineStyle);
         NMapPathDataOverlay pathDataOverlay = mOverlayManager.createPathDataOverlay(pathData);
         //pathDataOverlay.showAllPathData(12);
+
+    }
+    /*주요 경로 마커*/
+    public void ExcuteSeaPoint(NMapOverlayManager mOverlayManager, NMapViewerResourceProvider mMapViewerResourceProvider, int markeRoute)
+    {
+
+        seaPoiData = new NMapPOIdata(12, mMapViewerResourceProvider);
+        seaPoiData.beginPOIdata(12);
+        seaPoiData.addPOIitem(128.3755381, 38.5866220, "통일전망대", markeRoute, 0);
+        seaPoiData.addPOIitem(128.46427, 38.39845, "북천철교", markeRoute,0);
+        seaPoiData.addPOIitem(128.56326, 38.25101, "봉포해변", markeRoute, 0);
+        seaPoiData.addPOIitem(128.56669, 38.20455, "영금정", markeRoute,0);
+        seaPoiData.addPOIitem(128.66128, 38.04440, "동호해변", markeRoute, 0);
+        seaPoiData.addPOIitem(128.80650, 37.91828, "지경공원", markeRoute,0);
+        seaPoiData.addPOIitem(128.87452, 37.78440, "경포해변", markeRoute, 0);
+        seaPoiData.addPOIitem(129.00814, 37.68336, "정동진", markeRoute, 0);
+        seaPoiData.addPOIitem(129.08831, 37.59211, "망상해변", markeRoute, 0);
+        seaPoiData.addPOIitem(129.14318, 37.46819, "추암촛대바위", markeRoute, 0);
+        seaPoiData.addPOIitem(129.19751, 37.41380, "한재공원", markeRoute, 0);
+        seaPoiData.addPOIitem(129.33984, 37.23639, "임원", markeRoute, 0);
+        seaPoiData.endPOIdata();
+        seaPoiDataOverlay = mOverlayManager.createPOIdataOverlay(seaPoiData, null);
+
     }
 }
