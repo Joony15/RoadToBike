@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -47,10 +48,11 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
     NMapPOIdataOverlay.OnStateChangeListener onPOIdataStateChangeListener;
     NMapViewerResourceProvider mMapViewerResourceProvider = null;
     SeaRoute mSeaRoute;
-    private Button Wifi_Btn;
-    private Button Toilet_Btn;
-    private Button Light_Btn;
-    private Button back_Btn;
+    private ImageButton Wifi_Btn;
+    private ImageButton Toilet_Btn;
+    private ImageButton Bike_Btn;
+    private ImageButton Gps_Btn;
+    private ImageButton Back_Btn;
     LinearLayout Mapcontainer;
     public NMapPOIdata poiData;
     public NMapPOIdataOverlay poiDataOverlay;
@@ -99,14 +101,16 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         mSeaRoute.ExcuteSeaPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
 
         /*Button MountRoadpage*/
-        Wifi_Btn = (Button) findViewById(R.id.seawifi_btn);
-        Toilet_Btn = (Button) findViewById(R.id.seatoilet_btn);
-        Light_Btn = (Button) findViewById(R.id.sealight_btn);
-        back_Btn = (Button) findViewById(R.id.seaback_btn);
+        Wifi_Btn = (ImageButton) findViewById(R.id.seawifi_btn);
+        Toilet_Btn = (ImageButton) findViewById(R.id.seatoilet_btn);
+        Bike_Btn = (ImageButton) findViewById(R.id.seabike_btn);
+        Gps_Btn = (ImageButton) findViewById(R.id.seagps_btn);
+        Back_Btn = (ImageButton) findViewById(R.id.seaback_btn);
         Wifi_Btn.setOnClickListener(this);
         Toilet_Btn.setOnClickListener(this);
-        Light_Btn.setOnClickListener(this);
-        back_Btn.setOnClickListener(this);
+        Bike_Btn.setOnClickListener(this);
+        Gps_Btn.setOnClickListener(this);
+        Back_Btn.setOnClickListener(this);
 
     }
 
@@ -158,9 +162,14 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
                 Toast.makeText(SeaRoad.this, "(테스트)화장실정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.sealight_btn:
+            case R.id.seabike_btn:
                 //여기다 버튼 이벤트 코딩
-                Toast.makeText(SeaRoad.this, "(테스트)전기시간정상적인 클릭.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SeaRoad.this, "(테스트)자전거정상적인 클릭.", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.seagps_btn:
+                //여기다 버튼 이벤트 코딩
+                Toast.makeText(SeaRoad.this, "(테스트)현재위치정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.seaback_btn:

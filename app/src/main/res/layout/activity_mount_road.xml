@@ -6,12 +6,30 @@
     android:layout_height="match_parent"
     tools:context="com.example.noddy.roadtobike.MountRoad">
 
+
+    <LinearLayout
+        android:orientation = "vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.91"
+        android:background="#e6e6e6">
+        <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:src = "@drawable/back"
+            android:layout_weight="1" />
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/mountRoad_Btn"
         android:orientation = "vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.1">
+        android:layout_weight="0.2">
     </LinearLayout>
     <LinearLayout
         android:id="@+id/mountRoad_Map"
@@ -19,41 +37,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.9"
-        android:background="#fcbf92">
-        <Button
+        android:background="#e6e6e6">
+        <ImageButton
             android:id="@+id/wifi_btn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:text="wifi"
-            android:layout_weight="1"/>
-        <Button
+            android:src = "@drawable/wifi3"
+            android:layout_weight="1" />
+        <ImageButton
             android:id="@+id/toilet_btn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/actbutton"
-            android:text="toilet"
+            android:src = "@drawable/toilet"
             android:layout_weight="1"/>
-        <Button
-            android:id="@+id/light_btn"
+        <ImageButton
+            android:id="@+id/bike_btn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/actbutton"
-            android:text="light"
-            android:layout_weight="1"/>
-        <Button
-            android:id="@+id/back_btn"
+            android:src = "@drawable/bike"
+            android:layout_weight="1" />
+        <ImageButton
+            android:id="@+id/gps_btn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/actbutton"
-            android:text="back"
-            android:layout_weight="1"/>
-
+            android:src = "@drawable/gps"
+            android:layout_weight="1" />
     </LinearLayout>
 
 

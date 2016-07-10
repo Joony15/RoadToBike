@@ -6,12 +6,14 @@ import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -49,10 +51,12 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     NMapPOIdataOverlay.OnStateChangeListener onPOIdataStateChangeListener;
     NMapViewerResourceProvider mMapViewerResourceProvider = null;
     MountRoute mMountRoute;
-    private Button Wifi_Btn;
-    private Button Toilet_Btn;
-    private Button Light_Btn;
-    private Button back_Btn;
+    private ImageButton Wifi_Btn;
+    private ImageButton Toilet_Btn;
+    private ImageButton Bike_Btn;
+    private ImageButton Gps_Btn;
+    private ImageButton Back_Btn;
+
     //마커 경로 테스트용도
     private double testInt = 0;
     private NGeoPoint myLocation, testFromDistance;
@@ -121,14 +125,16 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         mMountRoute.ExcuteMountPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
 
         /*Button MountRoadpage*/
-        Wifi_Btn = (Button) findViewById(R.id.wifi_btn);
-        Toilet_Btn = (Button) findViewById(R.id.toilet_btn);
-        Light_Btn = (Button) findViewById(R.id.light_btn);
-        back_Btn = (Button) findViewById(R.id.back_btn);
+        Wifi_Btn = (ImageButton) findViewById(R.id.wifi_btn);
+        Toilet_Btn = (ImageButton) findViewById(R.id.toilet_btn);
+        Bike_Btn = (ImageButton) findViewById(R.id.bike_btn);
+        Gps_Btn = (ImageButton) findViewById(R.id.gps_btn);
+        Back_Btn = (ImageButton) findViewById(R.id.back_btn);
         Wifi_Btn.setOnClickListener(this);
         Toilet_Btn.setOnClickListener(this);
-        Light_Btn.setOnClickListener(this);
-        back_Btn.setOnClickListener(this);
+        Bike_Btn.setOnClickListener(this);
+        Gps_Btn.setOnClickListener(this);
+        Back_Btn.setOnClickListener(this);
 
     }
 
@@ -164,6 +170,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     }
 
     @Override
+
     public void onClick(View v) {
 
         switch(v.getId()) {
@@ -179,10 +186,15 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
                 Toast.makeText(MountRoad.this, "(테스트)화장실정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.light_btn:
+            case R.id.bike_btn:
                 //여기다 버튼 이벤트 코딩
-                Toast.makeText(MountRoad.this, "(테스트)전기시간정상적인 클릭.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MountRoad.this, "(테스트)바이크정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 mMountRoute.CheckMylocationFromMarker(mOverlayManager,mMapViewerResourceProvider,markerTest);
+                break;
+
+            case R.id.gps_btn:
+                //여기다 버튼 이벤트 코딩
+                Toast.makeText(MountRoad.this, "(테스트)현재위치정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.back_btn:
