@@ -28,7 +28,6 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:text="wifi"
-
             android:layout_weight="1"/>
         <Button
             android:id="@+id/toilet_btn"
