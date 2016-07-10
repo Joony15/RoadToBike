@@ -33,11 +33,6 @@
         </activity>
         <activity android:name=".MountRoad" />
         <activity android:name=".SeaRoad" />
-        <activity android:name=".WhereBike" >
-
-
-
-        </activity>
     </application>
 
 </manifest>

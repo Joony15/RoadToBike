@@ -4,8 +4,20 @@
     android:orientation = "vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    
     tools:context="com.example.noddy.roadtobike.MainActivity">
+
+
+    <LinearLayout
+        android:orientation = "vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.25">
+        <ImageView
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:src="@drawable/roadtobike"
+            android:id="@+id/imageView01" />
+    </LinearLayout>
 
 
     <LinearLayout
@@ -17,12 +29,17 @@
 
           <Button
               android:id="@+id/mountchoice_btn"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:drawableLeft="@drawable/mountain2"
               android:layout_centerVertical="true"
               android:layout_toRightOf="@+id/actbutton"
-              android:text="MountRoad" />
+              android:text="MountRoad"
+              android:typeface="monospace"
+              android:textStyle="bold"
+              android:textSize="25dp"/>
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/seachoice"
         android:orientation = "vertical"
@@ -33,23 +50,16 @@
             android:id="@+id/seachoice_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:drawableLeft="@drawable/wave1"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/actbutton"
-            android:text="SeaRoad" />
+            android:text="SeaRoad"
+            android:typeface="monospace"
+            android:textStyle="bold"
+            android:textSize="25dp"/>
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/wherebike"
-        android:orientation = "vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.33">
-        <Button
-            android:id="@+id/wherechoice_btn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/actbutton"
-            android:text="wherebike" />
-    </LinearLayout>
+
+
+
 
 </LinearLayout>
