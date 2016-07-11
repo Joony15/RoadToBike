@@ -53,6 +53,8 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
     private ImageButton Bike_Btn;
     private ImageButton Gps_Btn;
     private ImageButton Back_Btn;
+    private ImageButton Camera_Btn;
+
 
     //마커 경로 테스트용도
     private double disMylocationFromMarkerSea = 0;
@@ -116,11 +118,13 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         Bike_Btn = (ImageButton) findViewById(R.id.seabike_btn);
         Gps_Btn = (ImageButton) findViewById(R.id.seagps_btn);
         Back_Btn = (ImageButton) findViewById(R.id.seaback_btn);
+        Camera_Btn = (ImageButton) findViewById(R.id.seacamera_btn);
         Wifi_Btn.setOnClickListener(this);
         Toilet_Btn.setOnClickListener(this);
         Bike_Btn.setOnClickListener(this);
         Gps_Btn.setOnClickListener(this);
         Back_Btn.setOnClickListener(this);
+        Camera_Btn.setOnClickListener(this);
 
     }
 
@@ -194,6 +198,13 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
                 Toast.makeText(SeaRoad.this, "(테스트)뒤로가기정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 intentSea =new Intent(this, MainActivity.class);
                 startActivity(intentSea);
+                break;
+
+            case R.id.seacamera_btn:
+                //여기다 버튼 이벤트 코딩
+                Toast.makeText(SeaRoad.this, "(테스트)카메라정상적인 클릭.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, 0);
                 break;
         }
     }
