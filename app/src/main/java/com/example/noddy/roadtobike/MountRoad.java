@@ -6,10 +6,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -56,11 +56,9 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     private ImageButton Bike_Btn;
     private ImageButton Gps_Btn;
     private ImageButton Back_Btn;
-
     //마커 경로 테스트용도
-    private double testInt = 0;
+    private double disMylocationFromMarker = 0;
     private NGeoPoint myLocation, testFromDistance;
-
     LinearLayout Mapcontainer;
     public NMapPOIdata tpoiData;
     public NMapPOIdataOverlay poiDataOverlay;
@@ -68,6 +66,8 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     //마커 이미지 테스트
     Bitmap markerBitmap;
     Drawable markerTest;
+    Intent intentMount;
+    int flagForLocation = 0;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +85,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         mOverlayManager = new NMapOverlayManager(this, mMapView,
                 mMapViewerResourceProvider);
         mMapView.setOnMapStateChangeListener(this);
+
 
         /*
         * poiData.addPOIitem(127.0630205, 37.5091300, "위치1", markerTest, 0);
@@ -110,17 +111,6 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         myLocation = new NGeoPoint();
         myLocation = mMapLocationManager.getMyLocation();
 
-        testFromDistance = new NGeoPoint(126.73316, 37.39391);
-        if(myLocation != null)
-        {
-            testInt = myLocation.getDistance(testFromDistance,myLocation);
-        }
-        else
-        {
-            Toast.makeText(MountRoad.this, "(테스트)지도 초기화 실패.", Toast.LENGTH_SHORT).show();
-
-        }
-
         /*MountRoute에서 마커를 위해 불러온 함수*/
         mMountRoute.ExcuteMountPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
 
@@ -140,12 +130,12 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
 
     public void onMapInitHandler(NMapView mapView, NMapError errorInfo) {
         if (errorInfo == null) { // success
-           //Toast.makeText(MountRoad.this, "(테스트)지도 초기화 성공.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MountRoad.this, "(테스트)지도 초기화 성공.", Toast.LENGTH_SHORT).show();
 
             mMapController.setMapCenter(new NGeoPoint(128.2599500, 37.8741320), 11);
 
         } else { // fail
-           // Toast.makeText(MountRoad.this, "(테스트)지도 초기화 실패.", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(MountRoad.this, "(테스트)지도 초기화 실패.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -170,26 +160,31 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     }
 
     @Override
-
     public void onClick(View v) {
 
         switch(v.getId()) {
             case R.id.wifi_btn:
                 //여기다 버튼 이벤트 코딩
-                Toast.makeText(MountRoad.this, "(테스트)와이파이정상적인 클릭.", Toast.LENGTH_SHORT).show();
-                startMyLocation();
-                //poiDataOverlay.showAllPOIdata(0);
+                if(flagForLocation == 0)
+                {
+                    Toast.makeText(MountRoad.this, "(테스트)현재 위치 해제.", Toast.LENGTH_SHORT).show();
+                    stopMyLocation();
+                }else if(flagForLocation == 1){
+
+                    Toast.makeText(MountRoad.this, "(테스트)현재 위치 설정..", Toast.LENGTH_SHORT).show();
+                    startMyLocation();
+                }
                 break;
             case R.id.toilet_btn:
                 ////여기다 버튼 이벤트 코딩
-                stopMyLocation();
+
                 Toast.makeText(MountRoad.this, "(테스트)화장실정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.bike_btn:
                 //여기다 버튼 이벤트 코딩
-                Toast.makeText(MountRoad.this, "(테스트)바이크정상적인 클릭.", Toast.LENGTH_SHORT).show();
-                mMountRoute.CheckMylocationFromMarker(mOverlayManager,mMapViewerResourceProvider,markerTest);
+                Toast.makeText(MountRoad.this, "(테스트)전기시간정상적인 클릭.", Toast.LENGTH_SHORT).show();
+
                 break;
 
             case R.id.gps_btn:
@@ -200,8 +195,25 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
             case R.id.back_btn:
                 //여기다 버튼 이벤트 코딩
                 Toast.makeText(MountRoad.this, "(테스트)뒤로가기정상적인 클릭.", Toast.LENGTH_SHORT).show();
+                intentMount =new Intent(this, MainActivity.class);
+                startActivity(intentMount);
                 break;
         }
+    }
+    public double distanceFromMarker(){
+
+        if(myLocation != null)
+        {
+            disMylocationFromMarker = myLocation.getDistance(mMountRoute.forCheckedPoin[mMountRoute.FlagForMarker],myLocation);
+            //Toast.makeText(MountRoad.this, "(테스트)거리계산성공.", Toast.LENGTH_SHORT).show();
+
+        }
+        else
+        {
+            //Toast.makeText(MountRoad.this, "(테스트)거리계산실패.", Toast.LENGTH_SHORT).show();
+
+        }
+        return disMylocationFromMarker;
     }
     private void startMyLocation() {
 
@@ -214,11 +226,8 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
 
                 if (!mMapView.isAutoRotateEnabled()) {
                     mMyLocationOverlay.setCompassHeadingVisible(true);
-
                     mMapCompassManager.enableCompass();
-
                     mMapView.setAutoRotateEnabled(true, false);
-
                     Mapcontainer.requestLayout();
                 } else {
                     stopMyLocation();
@@ -298,16 +307,8 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
             /*위치변경될 때 이벤트 발생*/
             if (mMapController != null) {
                 mMapController.animateTo(myLocation);
-                Toast.makeText(MountRoad.this, "(테스트)위치 변화 테스트.", Toast.LENGTH_SHORT).show();
-                if(testInt > 10.0)
-                {
-                    tpoiData = new NMapPOIdata(1, mMapViewerResourceProvider);
-                    tpoiData.beginPOIdata(1);
-                    tpoiData.addPOIitem(testFromDistance, "거리계산테스트용", markerTest, 0);
-                    tpoiData.endPOIdata();
-                    poiDataOverlay = mOverlayManager.createPOIdataOverlay(tpoiData, null);
-
-                }
+                //Toast.makeText(MountRoad.this, "(테스트)위치 변화.", Toast.LENGTH_SHORT).show();
+                mMountRoute.CheckMylocationFromMarker(mOverlayManager,mMapViewerResourceProvider,markerTest, distanceFromMarker());
             }
             return true;
         }

@@ -1,9 +1,13 @@
 package com.example.noddy.roadtobike;
 
 import android.graphics.drawable.Drawable;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.nhn.android.maps.NMapView;
+import com.nhn.android.maps.maplib.NGeoPoint;
 import com.nhn.android.maps.overlay.NMapPOIdata;
+import com.nhn.android.maps.overlay.NMapPOIitem;
 import com.nhn.android.maps.overlay.NMapPathData;
 import com.nhn.android.maps.overlay.NMapPathLineStyle;
 import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
@@ -15,10 +19,11 @@ import com.nhn.android.mapviewer.overlay.NMapPathDataOverlay;
  *산악경로 paht를 관리하기 위한 클래스
  */
 public class MountRoute {
-
-    public NMapPOIdata poiData,poiDataChecked;
+    public NGeoPoint[] forCheckedPoin = new NGeoPoint[8];
+    public NMapPOIdata poiData;
+    public NMapPOIdata[] poiDataChecked = new NMapPOIdata[1];
     public NMapPOIdataOverlay mountPoiDataOverlay;
-    private int FlagForMarker, Mountmarker;
+    public int FlagForMarker = 0;
 
     public void ExcuteMountRoute(NMapOverlayManager mOverlayManager,NMapView MapViewForContext)
     {
@@ -85,10 +90,10 @@ public class MountRoute {
 
     public void ExcuteMountPoint(NMapOverlayManager mOverlayManager, NMapViewerResourceProvider mMapViewerResourceProvider, int markeRoute)
     {
-        Mountmarker = markeRoute;
+
         /*주요 경로 마커*/
-        poiData = new NMapPOIdata(7, mMapViewerResourceProvider);
-        poiData.beginPOIdata(7);
+        poiData = new NMapPOIdata(8, mMapViewerResourceProvider);
+        poiData.beginPOIdata(8);
         poiData.addPOIitem(128.2599500, 37.8741320, "상남", markeRoute, 0);
         poiData.addPOIitem(128.31100, 37.87288, "미산계곡", markeRoute,0);
         poiData.addPOIitem(128.452932, 37.824684,"칡소 폭포",markeRoute,0);
@@ -99,17 +104,117 @@ public class MountRoute {
         poiData.addPOIitem(128.2629901, 37.8808571, "오미재", markeRoute, 0);
         poiData.endPOIdata();
         mountPoiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
-    }
-    public void CheckMylocationFromMarker(NMapOverlayManager mOverlayManager, NMapViewerResourceProvider mMapViewerResourceProvider,  Drawable Mountdistance)
-    {
-        if(true)
-        {
-            poiDataChecked = new NMapPOIdata(1, mMapViewerResourceProvider);
-            poiDataChecked.beginPOIdata(1);
-            poiDataChecked.addPOIitem(128.2629901, 37.8808571, "거리계산테스트용", Mountdistance, 0);
-            poiDataChecked.endPOIdata();
-            mountPoiDataOverlay = mOverlayManager.createPOIdataOverlay(poiDataChecked, null);
+        forCheckedPoin[0] = new NGeoPoint(128.2599500, 37.8741320);
+        forCheckedPoin[1] = new NGeoPoint(128.31100, 37.87288);
+        forCheckedPoin[2] = new NGeoPoint(128.452932, 37.824684);
+        forCheckedPoin[3] = new NGeoPoint(128.5133257, 37.8799347);
+        forCheckedPoin[4] = new NGeoPoint(128.5033933, 37.9964677);
+        forCheckedPoin[5] = new NGeoPoint(128.4081958, 37.9634730);
+        forCheckedPoin[6] = new NGeoPoint(128.3375473, 37.9441227);
+        forCheckedPoin[7] = new NGeoPoint(128.2629901, 37.8808571);
 
+    }
+
+
+    public void CheckMylocationFromMarker(NMapOverlayManager mOverlayManager, NMapViewerResourceProvider mMapViewerResourceProvider,  Drawable Mountdistance,double distanceFromMarker)
+    {
+        poiDataChecked[0] = new NMapPOIdata(8, mMapViewerResourceProvider);
+
+        if(distanceFromMarker >200.0 && FlagForMarker == 0)
+        {
+
+            poiDataChecked[0].beginPOIdata(8);
+            poiDataChecked[0].addPOIitem(128.2599500, 37.8741320, "상남", Mountdistance, 0);
+            poiDataChecked[0].endPOIdata();
+            mountPoiDataOverlay = mOverlayManager.createPOIdataOverlay(poiDataChecked[0], null);
+            Log.i("TAG", ""+FlagForMarker);
+
+            FlagForMarker = 1;
+        }
+        else if(distanceFromMarker < 200.0 && FlagForMarker == 1)
+        {
+            poiDataChecked[0].beginPOIdata(8);
+            poiDataChecked[0].addPOIitem(128.2599500, 37.8741320, "상남", Mountdistance, 0);
+            poiDataChecked[0].addPOIitem(128.31100, 37.87288, "미산계곡", Mountdistance,0);
+            poiDataChecked[0].endPOIdata();
+            mountPoiDataOverlay = mOverlayManager.createPOIdataOverlay(poiDataChecked[0], null);
+            FlagForMarker = 2;
+        }
+        else if(distanceFromMarker < 200.0 && FlagForMarker == 2)
+        {
+            poiDataChecked[0].beginPOIdata(8);
+            poiDataChecked[0].addPOIitem(128.2599500, 37.8741320, "상남", Mountdistance, 0);
+            poiDataChecked[0].addPOIitem(128.31100, 37.87288, "미산계곡", Mountdistance,0);
+            poiDataChecked[0].addPOIitem(128.452932, 37.824684,"칡소 폭포",Mountdistance,0);
+            poiDataChecked[0].endPOIdata();
+            mountPoiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
+            FlagForMarker = 3;
+        }
+        else if(distanceFromMarker < 200.0 && FlagForMarker == 3)
+        {
+            poiDataChecked[0].beginPOIdata(8);
+            poiDataChecked[0].addPOIitem(128.2599500, 37.8741320, "상남", Mountdistance, 0);
+            poiDataChecked[0].addPOIitem(128.31100, 37.87288, "미산계곡", Mountdistance,0);
+            poiDataChecked[0].addPOIitem(128.452932, 37.824684,"칡소 폭포",Mountdistance,0);
+            poiDataChecked[0].addPOIitem(128.5133257, 37.8799347, "구룡령", Mountdistance, 0);
+            poiDataChecked[0].endPOIdata();
+            mountPoiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
+            FlagForMarker = 4;
+        }
+        else if(distanceFromMarker < 200.0 && FlagForMarker == 4)
+        {
+            poiDataChecked[0].beginPOIdata(8);
+            poiDataChecked[0].addPOIitem(128.2599500, 37.8741320, "상남", Mountdistance, 0);
+            poiDataChecked[0].addPOIitem(128.31100, 37.87288, "미산계곡", Mountdistance,0);
+            poiDataChecked[0].addPOIitem(128.452932, 37.824684,"칡소 폭포",Mountdistance,0);
+            poiDataChecked[0].addPOIitem(128.5133257, 37.8799347, "구룡령", Mountdistance, 0);
+            poiDataChecked[0].addPOIitem(128.5033933, 37.9964677, "조침터미널", Mountdistance,0);
+            poiDataChecked[0].endPOIdata();
+            mountPoiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
+            FlagForMarker = 5;
+
+        }
+        else if(distanceFromMarker < 200.0 && FlagForMarker == 5)
+        {
+            poiDataChecked[0].beginPOIdata(8);
+            poiDataChecked[0].addPOIitem(128.2599500, 37.8741320, "상남", Mountdistance, 0);
+            poiDataChecked[0].addPOIitem(128.31100, 37.87288, "미산계곡", Mountdistance,0);
+            poiDataChecked[0].addPOIitem(128.452932, 37.824684,"칡소 폭포",Mountdistance,0);
+            poiDataChecked[0].addPOIitem(128.5133257, 37.8799347, "구룡령", Mountdistance, 0);
+            poiDataChecked[0].addPOIitem(128.5033933, 37.9964677, "조침터미널", Mountdistance,0);
+            poiDataChecked[0].addPOIitem(128.4081958, 37.9634730, "진동계곡", Mountdistance, 0);
+            poiDataChecked[0].endPOIdata();
+            mountPoiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
+            FlagForMarker = 6;
+        }
+        else if(distanceFromMarker < 200.0 && FlagForMarker == 6)
+        {
+            poiDataChecked[0].beginPOIdata(8);
+            poiDataChecked[0].addPOIitem(128.2599500, 37.8741320, "상남", Mountdistance, 0);
+            poiDataChecked[0].addPOIitem(128.31100, 37.87288, "미산계곡", Mountdistance,0);
+            poiDataChecked[0].addPOIitem(128.452932, 37.824684,"칡소 폭포",Mountdistance,0);
+            poiDataChecked[0].addPOIitem(128.5133257, 37.8799347, "구룡령", Mountdistance, 0);
+            poiDataChecked[0].addPOIitem(128.5033933, 37.9964677, "조침터미널", Mountdistance,0);
+            poiDataChecked[0].addPOIitem(128.4081958, 37.9634730, "진동계곡", Mountdistance, 0);
+            poiDataChecked[0].addPOIitem(128.3375473, 37.9441227, "방동계곡", Mountdistance,0);
+            poiDataChecked[0].endPOIdata();
+            mountPoiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
+            FlagForMarker = 7;
+        }
+        else if(distanceFromMarker < 200.0 && FlagForMarker == 7)
+        {
+            poiDataChecked[0].beginPOIdata(8);
+            poiDataChecked[0].addPOIitem(128.2599500, 37.8741320, "상남", Mountdistance, 0);
+            poiDataChecked[0].addPOIitem(128.31100, 37.87288, "미산계곡", Mountdistance,0);
+            poiDataChecked[0].addPOIitem(128.452932, 37.824684,"칡소 폭포",Mountdistance,0);
+            poiDataChecked[0].addPOIitem(128.5133257, 37.8799347, "구룡령", Mountdistance, 0);
+            poiDataChecked[0].addPOIitem(128.5033933, 37.9964677, "조침터미널", Mountdistance,0);
+            poiDataChecked[0].addPOIitem(128.4081958, 37.9634730, "진동계곡", Mountdistance, 0);
+            poiDataChecked[0].addPOIitem(128.3375473, 37.9441227, "방동계곡", Mountdistance,0);
+            poiDataChecked[0].addPOIitem(128.2629901, 37.8808571, "오미재", Mountdistance, 0);
+            poiDataChecked[0].endPOIdata();
+            mountPoiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
+            FlagForMarker = 8;
         }
     }
 }
