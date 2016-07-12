@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mogaahf_oldata-free_wifi-yangyang>
+    <list_total_count>22</list_total_count>
+    <RESULT>
+        <CODE>INFO-000</CODE>
+        <MESSAGE>정상 처리되었습니다.</MESSAGE>
+    </RESULT>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>양양</GUGUN_NM>
+        <INIT_AREA_NM>양양군청</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>본관 1~4층 복도</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM>KT</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2012-05-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 양양군 양양읍 군청길 1</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 양양군 양양읍 군행리 8</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 양양군청</MANAGE_ORG_NM>
+        <ORG_TEL>033-670-2200</ORG_TEL>
+        <LAT>38.0754186</LAT>
+        <LNG>128.6197989</LNG>
+        <DATA_BASE_DT>2015-09-01</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>양양</GUGUN_NM>
+        <INIT_AREA_NM>양양읍사무소</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>1층 민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM>SKT</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2013-11-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 양양군 양양읍 관아길 32</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 양양군 양양읍 연창리 221</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 양양군청</MANAGE_ORG_NM>
+        <ORG_TEL>033-670-2200</ORG_TEL>
+        <LAT>38.0806742</LAT>
+        <LNG>128.6240581</LNG>
+        <DATA_BASE_DT>2015-09-01</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>양양</GUGUN_NM>
+        <INIT_AREA_NM>서면사무소(양양)</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>1층 민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM>KT</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2013-11-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 양양군 서면 물윗구미길 5</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 양양군 서면 상평리 35-7</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 양양군청</MANAGE_ORG_NM>
+        <ORG_TEL>033-670-2200</ORG_TEL>
+        <LAT>38.0715308</LAT>
+        <LNG>128.5852147</LNG>
+        <DATA_BASE_DT>2015-09-01</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>양양</GUGUN_NM>
+        <INIT_AREA_NM>손양면사무소</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>1층 민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM>SKT</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2013-11-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 양양군 손양면 손중로 209</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 양양군 손양면 하왕도리 145-3</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 양양군청</MANAGE_ORG_NM>
+        <ORG_TEL>033-670-2200</ORG_TEL>
+        <LAT>38.0698415</LAT>
+        <LNG>128.6299754</LNG>
+        <DATA_BASE_DT>2015-09-01</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>양양</GUGUN_NM>
+        <INIT_AREA_NM>현북면사무소</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>1층 민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM>SKT</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2013-11-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 양양군 현북면 하조대1길 41-8</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 양양군 현북면 하광정리 124-1</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 양양군청</MANAGE_ORG_NM>
+        <ORG_TEL>033-670-2200</ORG_TEL>
+        <LAT>38.0189705</LAT>
+        <LNG>128.7240076</LNG>
+        <DATA_BASE_DT>2015-09-01</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>고성</GUGUN_NM>
+        <INIT_AREA_NM>간성읍주민센터</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM>LGU+</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2013-07-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 고성군 간성읍 간성로67번길 14</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 고성군 간성읍 하리 28번지</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 고성군청</MANAGE_ORG_NM>
+        <ORG_TEL>033-680-3464</ORG_TEL>
+        <LAT>38.3783811</LAT>
+        <LNG>128.4670022</LNG>
+        <DATA_BASE_DT>2015-09-21</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>고성</GUGUN_NM>
+        <INIT_AREA_NM>거진읍주민센터</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM>LGU+</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2013-07-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 고성군 거진읍 자산천로 240</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 고성군 거진읍 송포리 634번지</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 고성군청</MANAGE_ORG_NM>
+        <ORG_TEL>033-680-3464</ORG_TEL>
+        <LAT>38.4361011</LAT>
+        <LNG>128.4525615</LNG>
+        <DATA_BASE_DT>2015-09-21</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>고성</GUGUN_NM>
+        <INIT_AREA_NM>죽왕면주민센터</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM>LGU+</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2013-07-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 고성군 죽왕면 오호길 11</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 고성군 죽왕면 오호리 163번지</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 고성군청</MANAGE_ORG_NM>
+        <ORG_TEL>033-680-3464</ORG_TEL>
+        <LAT>38.328758</LAT>
+        <LNG>128.5251853</LNG>
+        <DATA_BASE_DT>2015-09-21</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>고성</GUGUN_NM>
+        <INIT_AREA_NM>토성면주민센터</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM>LGU+</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2013-07-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 고성군 토성면 천진1길 4</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 고성군 토성면 천진리 163-1번지</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 고성군청</MANAGE_ORG_NM>
+        <ORG_TEL>033-680-3464</ORG_TEL>
+        <LAT>38.257264</LAT>
+        <LNG>128.558906</LNG>
+        <DATA_BASE_DT>2015-09-21</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>고성</GUGUN_NM>
+        <INIT_AREA_NM>현내면주민센터</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM>LGU+</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2013-07-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 고성군 현내면 한나루로 67</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 고성군 현내면 대진리 200-6</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 고성군청</MANAGE_ORG_NM>
+        <ORG_TEL>033-680-3464</ORG_TEL>
+        <LAT>38.494259</LAT>
+        <LNG>128.4276922</LNG>
+        <DATA_BASE_DT>2015-09-21</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>삼척</GUGUN_NM>
+        <INIT_AREA_NM>근덕면사무소</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM>KT</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2015-12-14</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 삼척시 근덕면 삼척로 3639</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 삼척시 근덕면 교가리 661-1</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 삼척시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-570-3006</ORG_TEL>
+        <LAT>129.225712</LAT>
+        <LNG>37.379281</LNG>
+        <DATA_BASE_DT>2015-09-23</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>삼척</GUGUN_NM>
+        <INIT_AREA_NM>남양동사무소</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM>KT</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2015-12-14</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 삼척시 남양길 11</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 삼척시 남양동 331-9</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 삼척시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-570-3006</ORG_TEL>
+        <LAT>129.168362</LAT>
+        <LNG>37.442558</LNG>
+        <DATA_BASE_DT>2015-09-23</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>삼척</GUGUN_NM>
+        <INIT_AREA_NM>도계역</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>대합실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>교통시설</INIT_SISUL_TY>
+        <SERVICE_NM>SKT</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2015-12-14</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 삼척시 도계로 220-15</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 삼척시 도계읍 전두리 66</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 삼척시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-570-3006</ORG_TEL>
+        <LAT>129.043786</LAT>
+        <LNG>37.229272</LNG>
+        <DATA_BASE_DT>2015-09-23</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>삼척</GUGUN_NM>
+        <INIT_AREA_NM>도계읍사무소</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM>KT</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2015-12-14</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 삼척시 도계읍 도계로 308</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 삼척시 도계읍 도계리 369-5</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 삼척시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-570-3006</ORG_TEL>
+        <LAT>129.045129</LAT>
+        <LNG>37.236466</LNG>
+        <DATA_BASE_DT>2015-09-23</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>삼척</GUGUN_NM>
+        <INIT_AREA_NM>도계청소년장학센터</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>열람실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>교육시설</INIT_SISUL_TY>
+        <SERVICE_NM>KT</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2015-12-14</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 삼척시 도계읍 도계로 254</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 삼척시 도계읍 전두리 49-5</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 삼척시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-570-3006</ORG_TEL>
+        <LAT>129.044998</LAT>
+        <LNG>37.232101</LNG>
+        <DATA_BASE_DT>2015-09-23</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>속초</GUGUN_NM>
+        <INIT_AREA_NM>노학동주민센터</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM/>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2014-10-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 속초시 동해대로 4245 (교동)</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 속초시 교동 979</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 속초시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-636-2299</ORG_TEL>
+        <LAT>38.1967339</LAT>
+        <LNG>128.5763979</LNG>
+        <DATA_BASE_DT>2015-09-23</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>속초</GUGUN_NM>
+        <INIT_AREA_NM>조양동주민센터</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM/>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2014-10-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 속초시 선사로1길 16 (조양동)</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 속초시 조양동 1524</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 속초시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-636-2299</ORG_TEL>
+        <LAT>38.1876281</LAT>
+        <LNG>128.5908407</LNG>
+        <DATA_BASE_DT>2015-09-23</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>속초</GUGUN_NM>
+        <INIT_AREA_NM>청호동주민센터</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM/>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2014-10-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 속초시 청호로 93 (청호동)</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 속초시 청호동 1248-1</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 속초시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-636-2299</ORG_TEL>
+        <LAT>38.1979615</LAT>
+        <LNG>128.5954339</LNG>
+        <DATA_BASE_DT>2015-09-23</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>속초</GUGUN_NM>
+        <INIT_AREA_NM>대포동주민센터</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM/>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2014-10-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 속초시 설악산로 466 (도문동)</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 속초시 도문동 325-4</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 속초시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-636-2299</ORG_TEL>
+        <LAT>38.1656193</LAT>
+        <LNG>128.5570928</LNG>
+        <DATA_BASE_DT>2015-09-23</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>속초</GUGUN_NM>
+        <INIT_AREA_NM>속초관광수산시장</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>시장지하</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>기타</INIT_SISUL_TY>
+        <SERVICE_NM/>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2014-10-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 속초시 중앙로147번길 16 (중앙동)</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 속초시 중앙동 471-4</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 속초시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-636-2299</ORG_TEL>
+        <LAT>38.2044489</LAT>
+        <LNG>128.5901534</LNG>
+        <DATA_BASE_DT>2015-09-23</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>동해</GUGUN_NM>
+        <INIT_AREA_NM>동해근로복지회관</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>동해근로복지회관 내</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>복지시설</INIT_SISUL_TY>
+        <SERVICE_NM>KT</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2015-10-12</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 동해시 동굴로 2</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 동해시 천곡동 1005-12</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 동해시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-530-2300</ORG_TEL>
+        <LAT>37.514899</LAT>
+        <LNG>129.105012</LNG>
+        <DATA_BASE_DT>2015-08-18</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>동해</GUGUN_NM>
+        <INIT_AREA_NM>동해여객터미널</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>터미널 내 대합실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>복지시설</INIT_SISUL_TY>
+        <SERVICE_NM>LGU+</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2015-10-12</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 동해시 임항로 129</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 동해시 발한동 80-171</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 동해시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-530-2300</ORG_TEL>
+        <LAT>37.54359</LAT>
+        <LNG>129.113453</LNG>
+        <DATA_BASE_DT>2015-08-18</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>동해</GUGUN_NM>
+        <INIT_AREA_NM>동해고속버스터미널</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>터미널 내 대합실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>복지시설</INIT_SISUL_TY>
+        <SERVICE_NM>SKT</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2015-10-12</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 동해시 부곡로 1</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 동해시 부곡동 88</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 동해시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-530-2300</ORG_TEL>
+        <LAT>37.536116</LAT>
+        <LNG>129.104051</LNG>
+        <DATA_BASE_DT>2015-08-18</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>동해</GUGUN_NM>
+        <INIT_AREA_NM>동해도서관</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>동해도서관 내</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>복지시설</INIT_SISUL_TY>
+        <SERVICE_NM>LGU+</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2015-10-12</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 동해시 부곡5길 22</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 동해시 부곡동 12-1</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 동해시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-530-2300</ORG_TEL>
+        <LAT>37.538546</LAT>
+        <LNG>129.109792</LNG>
+        <DATA_BASE_DT>2015-08-18</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>동해</GUGUN_NM>
+        <INIT_AREA_NM>동해병원</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>동해병원 구관, 신관, 장례식장</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>복지시설</INIT_SISUL_TY>
+        <SERVICE_NM>LGU+</SERVICE_NM>
+        <WIFI_SSID>Public WiFi Free</WIFI_SSID>
+        <INIT_YM>2015-10-12</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 동해시 하평로 11</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 동해시 평릉동 190</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 동해시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-530-2300</ORG_TEL>
+        <LAT>37.531383</LAT>
+        <LNG>129.107785</LNG>
+        <DATA_BASE_DT>2015-08-18</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>강릉</GUGUN_NM>
+        <INIT_AREA_NM>강릉시청</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM>KT</SERVICE_NM>
+        <WIFI_SSID/>
+        <INIT_YM>2014-09-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 강릉시 홍제동 강릉대로 33(홍제동)</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 강릉시 홍제동 1001</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 강릉시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-640-5332</ORG_TEL>
+        <LAT>37.752416</LAT>
+        <LNG>128.875902</LNG>
+        <DATA_BASE_DT>2014-12-31</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>강릉</GUGUN_NM>
+        <INIT_AREA_NM>오죽헌</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>오죽헌 경내</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관광</INIT_SISUL_TY>
+        <SERVICE_NM>KT</SERVICE_NM>
+        <WIFI_SSID/>
+        <INIT_YM>2014-09-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 강릉시 율곡로 3139번길 24(죽헌동)</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 강릉시 죽헌동 177-4</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 강릉시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-640-5332</ORG_TEL>
+        <LAT>37.780079</LAT>
+        <LNG>128.879417</LNG>
+        <DATA_BASE_DT>2014-12-31</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>강릉</GUGUN_NM>
+        <INIT_AREA_NM>강릉중앙시장</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>중앙시장내</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>기타</INIT_SISUL_TY>
+        <SERVICE_NM>KT</SERVICE_NM>
+        <WIFI_SSID/>
+        <INIT_YM>2014-09-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 강릉시 금성로 21(성남동)</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 강릉시 성남동 50 중앙시장</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 강릉시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-640-5332</ORG_TEL>
+        <LAT>37.754238</LAT>
+        <LNG>128.898485</LNG>
+        <DATA_BASE_DT>2014-12-31</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>강릉</GUGUN_NM>
+        <INIT_AREA_NM>주문진 수산시장</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>수산시장내</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>기타</INIT_SISUL_TY>
+        <SERVICE_NM>KT</SERVICE_NM>
+        <WIFI_SSID/>
+        <INIT_YM>2014-09-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 강릉시 주문진읍 시장길 38</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 강릉시 주문진읍 주문리 312-91 주문진수산시장</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 강릉시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-640-5332</ORG_TEL>
+        <LAT>37.907077</LAT>
+        <LNG>128.824795</LNG>
+        <DATA_BASE_DT>2014-12-31</DATA_BASE_DT>
+    </row>
+    <row>
+        <INIT_SIDO>강원도</INIT_SIDO>
+        <GUGUN_NM>강릉</GUGUN_NM>
+        <INIT_AREA_NM>강남동주민센터</INIT_AREA_NM>
+        <INIT_AREA_DETAIL>민원실</INIT_AREA_DETAIL>
+        <INIT_SISUL_TY>관공서</INIT_SISUL_TY>
+        <SERVICE_NM>KT</SERVICE_NM>
+        <WIFI_SSID/>
+        <INIT_YM>2014-09-01</INIT_YM>
+        <LOCPLC_ROADNM_ADDR>강원도 강릉시 남부로 232(노암동)</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 강릉시 노암동 133</LOCPLC_LOTNO_ADDR>
+        <MANAGE_ORG_NM>강원도 강릉시청</MANAGE_ORG_NM>
+        <ORG_TEL>033-640-5332</ORG_TEL>
+        <LAT>37.744372</LAT>
+        <LNG>128.905555</LNG>
+        <DATA_BASE_DT>2014-12-31</DATA_BASE_DT>
+    </row>
+</mogaahf_oldata-free_wifi-yangyang>

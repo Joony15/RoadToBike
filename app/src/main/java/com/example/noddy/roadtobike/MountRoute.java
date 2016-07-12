@@ -120,7 +120,7 @@ public class MountRoute {
     {
         poiDataChecked[0] = new NMapPOIdata(8, mMapViewerResourceProvider);
 
-        if(distanceFromMarker >200.0 && FlagForMarker == 0)
+        if(true/*distanceFromMarker > 200.0 && FlagForMarker == */)
         {
 
             poiDataChecked[0].beginPOIdata(8);

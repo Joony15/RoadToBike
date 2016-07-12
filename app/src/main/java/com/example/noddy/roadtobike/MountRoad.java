@@ -58,6 +58,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     private ImageButton Gps_Btn;
     private ImageButton Back_Btn;
     private ImageButton Camera_Btn;
+
     //마커 경로 테스트용도
     private double disMylocationFromMarker = 0;
     private NGeoPoint myLocation, testFromDistance;
@@ -65,10 +66,13 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     public NMapPOIdata tpoiData;
     public NMapPOIdataOverlay poiDataOverlay;
     public int markerId;
+    MarkerByCategory mMountMarker;
+    DbForPublicDataParsing mDbForPublicDataParsing;
+
     //마커 이미지 테스트
-    Bitmap markerBitmap;
-    Drawable markerTest;
-    Intent intentMount;
+    Bitmap markerBitmap,bitmapWifi;
+    Drawable markerTest,markerWifi;
+    Intent intentMount, intent;
     int flagForLocation = 0;
     private TextView textview;
 
@@ -96,8 +100,11 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         * 아래보이는 두줄이용해서 markerTest에 getResources(),R.drawable.ic_net_wif를 이용해서
         * 변수에 내가 원하는 이미지를 넣음
         */
-        markerBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.ic_net_wif);
+        markerBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.ic_pin_06_r);
+        bitmapWifi = BitmapFactory.decodeResource(getResources(),R.drawable.wifi3);
+
         markerTest = new BitmapDrawable(markerBitmap);
+        markerWifi = new BitmapDrawable(bitmapWifi);
         markerId = NMapPOIflagType.PIN;
 
         /*my location*/
@@ -113,6 +120,10 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         //현재 나의 위치 받아오기
         myLocation = new NGeoPoint();
         myLocation = mMapLocationManager.getMyLocation();
+
+        //카테고리별 마커 설정위한 클래스 호출
+        mDbForPublicDataParsing = new DbForPublicDataParsing();
+        mMountMarker = new MarkerByCategory();
 
         /*MountRoute에서 마커를 위해 불러온 함수*/
         mMountRoute.ExcuteMountPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
@@ -171,22 +182,17 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
 
         switch(v.getId()) {
             case R.id.wifi_btn:
-                //여기다 버튼 이벤트 코딩
                 textview.setText("무료 와이파이");
-                if(flagForLocation == 0)
-                {
-                    Toast.makeText(MountRoad.this, "(테스트)현재 위치 해제.", Toast.LENGTH_SHORT).show();
-                    stopMyLocation();
-                }else if(flagForLocation == 1){
-
-                    Toast.makeText(MountRoad.this, "(테스트)현재 위치 설정..", Toast.LENGTH_SHORT).show();
-                    startMyLocation();
-                }
+                //여기다 버튼 이벤트 코딩
+                mMountMarker.ExcutWifiPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
                 break;
+
             case R.id.toilet_btn:
                 ////여기다 버튼 이벤트 코딩
                 textview.setText("공용 화장실");
                 Toast.makeText(MountRoad.this, "(테스트)화장실정상적인 클릭.", Toast.LENGTH_SHORT).show();
+                Intent iintent = new Intent(this, DbForPublicDataParsing.class);
+                startActivity(iintent);
                 break;
 
             case R.id.bike_btn:
@@ -199,6 +205,17 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
                 //여기다 버튼 이벤트 코딩
                 textview.setText("현재위치");
                 Toast.makeText(MountRoad.this, "(테스트)현재위치정상적인 클릭.", Toast.LENGTH_SHORT).show();
+                if(flagForLocation == 0)
+                {
+                    Toast.makeText(MountRoad.this, "(테스트)현재 위치 해제.", Toast.LENGTH_SHORT).show();
+                    stopMyLocation();
+                    flagForLocation = 1;
+                }else if(flagForLocation == 1){
+
+                    Toast.makeText(MountRoad.this, "(테스트)현재 위치 설정..", Toast.LENGTH_SHORT).show();
+                    startMyLocation();
+                    flagForLocation = 0;
+                }
                 break;
 
             case R.id.back_btn:
@@ -231,6 +248,8 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         }
         return disMylocationFromMarker;
     }
+
+    /*현재 위치 시작*/
     private void startMyLocation() {
 
         if (mMyLocationOverlay != null) {
@@ -265,6 +284,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         }
     }
 
+    /*현재 위치 종료*/
     private void stopMyLocation() {
         if (mMyLocationOverlay != null) {
             mMapLocationManager.disableMyLocation();
@@ -314,6 +334,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     public void onSingleTapUp(NMapView nMapView, MotionEvent motionEvent) {
 
     }
+
     /* MyLocation Listener */
     private final NMapLocationManager.OnLocationChangeListener onMyLocationChangeListener = new NMapLocationManager.OnLocationChangeListener() {
 

@@ -169,17 +169,7 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
             case R.id.seawifi_btn:
                 //여기다 버튼 이벤트 코딩
                 textview.setText("무료 와이파이");
-                if(flagForLocationSea == 0)
-                {
-                    Toast.makeText(SeaRoad.this, "(테스트)현재 위치 해제.", Toast.LENGTH_SHORT).show();
-                    stopMyLocation();
 
-                }else if(flagForLocationSea == 1){
-
-
-                    Toast.makeText(SeaRoad.this, "(테스트)현재 위치 설정..", Toast.LENGTH_SHORT).show();
-                    startMyLocation();
-                }
                 break;
             case R.id.seatoilet_btn:
                 ////여기다 버튼 이벤트 코딩
@@ -198,6 +188,17 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
                 //여기다 버튼 이벤트 코딩
                 textview.setText("현재위치");
                 Toast.makeText(SeaRoad.this, "(테스트)현재위치정상적인 클릭.", Toast.LENGTH_SHORT).show();
+                if(flagForLocationSea== 0)
+                {
+                    Toast.makeText(SeaRoad.this, "(테스트)현재 위치 해제.", Toast.LENGTH_SHORT).show();
+                    stopMyLocation();
+                    flagForLocationSea = 1;
+                }else if(flagForLocationSea == 1){
+
+                    Toast.makeText(SeaRoad.this, "(테스트)현재 위치 설정..", Toast.LENGTH_SHORT).show();
+                    startMyLocation();
+                    flagForLocationSea = 0;
+                }
                 break;
 
             case R.id.seaback_btn:

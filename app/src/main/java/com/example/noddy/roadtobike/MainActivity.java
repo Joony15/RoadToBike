@@ -22,9 +22,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Button WhereGo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-
+        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
 
         // roadtobike 이미지 띄우기 코드

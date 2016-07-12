@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gwcgcom-bicycle_certify_spot-yangyang>
+    <list_total_count>16</list_total_count>
+    <RESULT>
+        <CODE>INFO-000</CODE>
+        <MESSAGE>정상 처리되었습니다.</MESSAGE>
+    </RESULT>
+    <row>
+        <SIDO>강원도</SIDO>
+        <GUGUN_NM>강릉</GUGUN_NM>
+        <SISUL_NM>경포해변</SISUL_NM>
+        <LOCPLC_ROADNM_ADDR/>
+        <LOCPLC_LOTNO_ADDR>강원도 강릉시 안현동 산 1-10</LOCPLC_LOTNO_ADDR>
+        <USE_ORG>강원도 강릉시청</USE_ORG>
+        <INIT_AREA>경포해변 중앙통로 우측</INIT_AREA>
+        <I_HOLYDAY>연중무휴</I_HOLYDAY>
+        <BBS_TEL>033-640-5382</BBS_TEL>
+        <USE_OPEN_DT/>
+        <USE_CLOSE_DT/>
+        <LNG>128.9072119</LNG>
+        <LAT>37.8054624</LAT>
+        <DATA_BASE_DT>2015-10-31</DATA_BASE_DT>
+    </row>
+    <row>
+        <SIDO>강원도</SIDO>
+        <GUGUN_NM>강릉</GUGUN_NM>
+        <SISUL_NM>정동진해변</SISUL_NM>
+        <LOCPLC_ROADNM_ADDR/>
+        <LOCPLC_LOTNO_ADDR>강원도 강릉시 강동면 정동진리 569-2</LOCPLC_LOTNO_ADDR>
+        <USE_ORG>강원도 강릉시청</USE_ORG>
+        <INIT_AREA>정동진 모래시계공원내</INIT_AREA>
+        <I_HOLYDAY>연중무휴</I_HOLYDAY>
+        <BBS_TEL>033-640-5382</BBS_TEL>
+        <USE_OPEN_DT/>
+        <USE_CLOSE_DT/>
+        <LNG>129.0383316</LNG>
+        <LAT>37.6864644</LAT>
+        <DATA_BASE_DT>2015-10-31</DATA_BASE_DT>
+    </row>
+    <row>
+        <SIDO>강원도</SIDO>
+        <GUGUN_NM>동해</GUGUN_NM>
+        <SISUL_NM>망상해변</SISUL_NM>
+        <LOCPLC_ROADNM_ADDR>강원도 동해시 동해대로 6220</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 동해시 망상동 393-97</LOCPLC_LOTNO_ADDR>
+        <USE_ORG>강원도 동해시청</USE_ORG>
+        <INIT_AREA>망상해변 제2오토캠핑장 화장실 앞</INIT_AREA>
+        <I_HOLYDAY>연중무휴</I_HOLYDAY>
+        <BBS_TEL>033-539-8328</BBS_TEL>
+        <USE_OPEN_DT>2014-06-30</USE_OPEN_DT>
+        <USE_CLOSE_DT/>
+        <LNG>129.0951081</LNG>
+        <LAT>37.5899261</LAT>
+        <DATA_BASE_DT>2015-11-05</DATA_BASE_DT>
+    </row>
+    <row>
+        <SIDO>강원도</SIDO>
+        <GUGUN_NM>동해</GUGUN_NM>
+        <SISUL_NM>추암해변</SISUL_NM>
+        <LOCPLC_ROADNM_ADDR>강원도 동해시 추암촛대바위길</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 동해시 추암동 8-1</LOCPLC_LOTNO_ADDR>
+        <USE_ORG>강원도 동해시청</USE_ORG>
+        <INIT_AREA>추암해수욕장</INIT_AREA>
+        <I_HOLYDAY>연중무휴</I_HOLYDAY>
+        <BBS_TEL>033-539-8328</BBS_TEL>
+        <USE_OPEN_DT>2014-07-01</USE_OPEN_DT>
+        <USE_CLOSE_DT/>
+        <LNG>129.1599301</LNG>
+        <LAT>37.4762191</LAT>
+        <DATA_BASE_DT>2015-11-05</DATA_BASE_DT>
+    </row>
+    <row>
+        <SIDO>강원도</SIDO>
+        <GUGUN_NM>속초</GUGUN_NM>
+        <SISUL_NM>영금정</SISUL_NM>
+        <LOCPLC_ROADNM_ADDR>강원도 속초시 영랑해안길 40 (영랑동)</LOCPLC_ROADNM_ADDR>
+        <LOCPLC_LOTNO_ADDR>강원도 속초시 영랑동 1-3</LOCPLC_LOTNO_ADDR>
+        <USE_ORG>강원도 속초시청</USE_ORG>
+        <INIT_AREA>속초등대전망대 입구 건너편</INIT_AREA>
+        <I_HOLYDAY>연중무휴</I_HOLYDAY>
+        <BBS_TEL>1577-4359</BBS_TEL>
+        <USE_OPEN_DT>2014-08-01</USE_OPEN_DT>
+        <USE_CLOSE_DT/>
+        <LNG>128.601382</LNG>
+        <LAT>38.213658</LAT>
+        <DATA_BASE_DT>2015-11-13</DATA_BASE_DT>
+    </row>
+</gwcgcom-bicycle_certify_spot-yangyang>
