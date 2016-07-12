@@ -15,6 +15,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nhn.android.maps.NMapActivity;
@@ -68,6 +69,7 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
     Drawable markerTest;
     Intent intentSea;
     int flagForLocationSea = 0;
+    private TextView textview;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,6 +127,7 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         Gps_Btn.setOnClickListener(this);
         Back_Btn.setOnClickListener(this);
         Camera_Btn.setOnClickListener(this);
+        textview = (TextView)findViewById(R.id.textview2);
 
     }
 
@@ -165,6 +168,7 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         switch(v.getId()) {
             case R.id.seawifi_btn:
                 //여기다 버튼 이벤트 코딩
+                textview.setText("무료 와이파이");
                 if(flagForLocationSea == 0)
                 {
                     Toast.makeText(SeaRoad.this, "(테스트)현재 위치 해제.", Toast.LENGTH_SHORT).show();
@@ -179,17 +183,20 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
                 break;
             case R.id.seatoilet_btn:
                 ////여기다 버튼 이벤트 코딩
+                textview.setText("공용 화장실");
                 stopMyLocation();
                 Toast.makeText(SeaRoad.this, "(테스트)화장실정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.seabike_btn:
                 //여기다 버튼 이벤트 코딩
+                textview.setText("자전거 대여소");
                 Toast.makeText(SeaRoad.this, "(테스트)전기시간정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.seagps_btn:
                 //여기다 버튼 이벤트 코딩
+                textview.setText("현재위치");
                 Toast.makeText(SeaRoad.this, "(테스트)현재위치정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 break;
 

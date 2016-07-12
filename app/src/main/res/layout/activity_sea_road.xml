@@ -28,6 +28,14 @@
             android:layout_height="match_parent"
             android:layout_weight="0.91"
             android:background="#e6e6e6">
+            <TextView
+                android:id="@+id/textview2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:typeface="monospace"
+                android:textStyle="bold"/>
+
         </LinearLayout>
         <ImageButton
             android:id="@+id/seacamera_btn"

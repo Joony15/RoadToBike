@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nhn.android.maps.NMapActivity;
@@ -69,6 +70,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     Drawable markerTest;
     Intent intentMount;
     int flagForLocation = 0;
+    private TextView textview;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +130,8 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         Gps_Btn.setOnClickListener(this);
         Back_Btn.setOnClickListener(this);
         Camera_Btn.setOnClickListener(this);
+        textview = (TextView)findViewById(R.id.textview1);
+
 
     }
 
@@ -168,6 +172,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         switch(v.getId()) {
             case R.id.wifi_btn:
                 //여기다 버튼 이벤트 코딩
+                textview.setText("무료 와이파이");
                 if(flagForLocation == 0)
                 {
                     Toast.makeText(MountRoad.this, "(테스트)현재 위치 해제.", Toast.LENGTH_SHORT).show();
@@ -180,18 +185,19 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
                 break;
             case R.id.toilet_btn:
                 ////여기다 버튼 이벤트 코딩
-
+                textview.setText("공용 화장실");
                 Toast.makeText(MountRoad.this, "(테스트)화장실정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.bike_btn:
                 //여기다 버튼 이벤트 코딩
+                textview.setText("자전거 대여소");
                 Toast.makeText(MountRoad.this, "(테스트)전기시간정상적인 클릭.", Toast.LENGTH_SHORT).show();
-
                 break;
 
             case R.id.gps_btn:
                 //여기다 버튼 이벤트 코딩
+                textview.setText("현재위치");
                 Toast.makeText(MountRoad.this, "(테스트)현재위치정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 break;
 
