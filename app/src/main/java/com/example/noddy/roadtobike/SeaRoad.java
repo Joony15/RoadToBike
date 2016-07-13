@@ -64,6 +64,7 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
     public NMapPOIdata poiData;
     public NMapPOIdataOverlay poiDataOverlay;
     public int markerId;
+    MarkerByCategory mSeaMarker;
     /*마커 이미지 테스트 */
     Bitmap markerBitmap;
     Drawable markerTest;
@@ -110,7 +111,8 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         //현재 나의 위치 받아오기
         myLocationSea = new NGeoPoint();
         myLocationSea = mMapLocationManager.getMyLocation();
-
+        //카테고리별 마커 설정위한 클래스 호출
+        mSeaMarker = new MarkerByCategory();
         /*SeaRoute에서 마커를 위해 불러온 함수*/
         mSeaRoute.ExcuteSeaPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
 
@@ -169,19 +171,21 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
             case R.id.seawifi_btn:
                 //여기다 버튼 이벤트 코딩
                 textview.setText("무료 와이파이");
+                mSeaMarker.ExcutWifiPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
 
                 break;
             case R.id.seatoilet_btn:
                 ////여기다 버튼 이벤트 코딩
                 textview.setText("공용 화장실");
-                stopMyLocation();
-                Toast.makeText(SeaRoad.this, "(테스트)화장실정상적인 클릭.", Toast.LENGTH_SHORT).show();
+                mSeaMarker.ExcutToiletPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
                 break;
 
             case R.id.seabike_btn:
                 //여기다 버튼 이벤트 코딩
                 textview.setText("자전거 대여소");
                 Toast.makeText(SeaRoad.this, "(테스트)전기시간정상적인 클릭.", Toast.LENGTH_SHORT).show();
+                mSeaMarker.ExcutBikePoint(mOverlayManager,mMapViewerResourceProvider,markerId);
+
                 break;
 
             case R.id.seagps_btn:

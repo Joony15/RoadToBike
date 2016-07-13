@@ -56,7 +56,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     private ImageButton Gps_Btn;
     private ImageButton Back_Btn;
     private ImageButton Camera_Btn;
-    private int flagForLocation = 0, flagForWifiMarker = 0;
+    private int flagForLocation = 0;
     //마커 경로 테스트용도
     private double disMylocationFromMarker = 0;
     private NGeoPoint myLocation, testFromDistance;

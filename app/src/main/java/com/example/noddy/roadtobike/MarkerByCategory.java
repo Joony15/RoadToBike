@@ -27,14 +27,15 @@ public class MarkerByCategory extends Activity {
     public NMapPOIdata toiletFordata[] = new NMapPOIdata[40];
     public NMapPOIdataOverlay testPOIdataOverlay;
     public MainActivity wifi = new MainActivity();
+    public MainActivity bike = new MainActivity();
 
     public String[] MarkerBike = new String[50];//자전거인증소 정보 들어갈 배열
     public int j = 0;
     public double a = 0 , b = 0;
     public static List<String> searchResultList = new ArrayList<String>();
     public static List<String> searchResultListToilet = new ArrayList<String>();
-    public void ExcutWifiPoint(NMapOverlayManager mOverlayManagerMarker, NMapViewerResourceProvider mMapViewerResourceProviderMarker, int markeRoute) {
 
+    public void ExcutWifiPoint(NMapOverlayManager mOverlayManagerMarker, NMapViewerResourceProvider mMapViewerResourceProviderMarker, int markeRoute) {
         if (flaggW == 0) {
             for(int i = 0; i <120 ; i = i +4) {
                 a = Double.parseDouble(wifi.Wifi[i+3]);
@@ -59,10 +60,6 @@ public class MarkerByCategory extends Activity {
     }
 
     public void ExcutToiletPoint(NMapOverlayManager mOverlayManagerMarker, NMapViewerResourceProvider mMapViewerResourceProviderMarker, int markeRoute){
-
-
-
-
         if (flaggT == 0) {
             for(int i = 0; i <148 ; i = i +4) {
                 a = Double.parseDouble(searchResultListToilet.get(i+2).toString());
@@ -74,6 +71,7 @@ public class MarkerByCategory extends Activity {
                 testPOIdataOverlay = mOverlayManagerMarker.createPOIdataOverlay(toilet[j], null);
                 j++;
             }
+            j = 0;
             flaggT = 1;
         }else if(flaggT == 1) {
             for(int i =0 ; i < 37 ; i++) {
@@ -98,6 +96,7 @@ public class MarkerByCategory extends Activity {
                 testPOIdataOverlay = mOverlayManagerMarker.createPOIdataOverlay(bikeFordata[j], null);
                 j++;
             }
+            j = 0;
             flaggB = 1;
         }else if(flaggB == 1) {
             for(int i =0 ; i < 5 ; i++) {

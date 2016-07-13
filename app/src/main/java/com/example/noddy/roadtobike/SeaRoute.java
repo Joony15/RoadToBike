@@ -121,7 +121,7 @@ public class SeaRoute {
     {
         poiDataCheckedSea[0] = new NMapPOIdata(12, mMapViewerResourceProvider);
 
-        if(distanceFromMarker >200.0 && FlagForMarkerSea == 0)
+        if(distanceFromMarker < 200.0 && FlagForMarkerSea == 0)
         {
 
             poiDataCheckedSea[0].beginPOIdata(12);
