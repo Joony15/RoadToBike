@@ -32,8 +32,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MountRoad" />
-        <activity android:name=".SeaRoad" />
-        <activity android:name=".DbForPublicDataParsing" ></activity>
+        <activity android:name=".SeaRoad" ></activity>
     </application>
 
 </manifest>

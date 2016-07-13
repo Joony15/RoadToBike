@@ -23,14 +23,16 @@ public class MarkerByCategory extends Activity {
     private int flaggW = 0,flaggT = 0,flaggB = 0;
     public NMapPOIdata testFordata[] = new NMapPOIdata[40];
     public NMapPOIdata bikeFordata[] = new NMapPOIdata[40];
+    public NMapPOIdata toilet[] = new NMapPOIdata[40];
     public NMapPOIdata toiletFordata[] = new NMapPOIdata[40];
     public NMapPOIdataOverlay testPOIdataOverlay;
-    public DbForPublicDataParsing wifi = new DbForPublicDataParsing();
+    public MainActivity wifi = new MainActivity();
 
     public String[] MarkerBike = new String[50];//자전거인증소 정보 들어갈 배열
     public int j = 0;
     public double a = 0 , b = 0;
     public static List<String> searchResultList = new ArrayList<String>();
+    public static List<String> searchResultListToilet = new ArrayList<String>();
     public void ExcutWifiPoint(NMapOverlayManager mOverlayManagerMarker, NMapViewerResourceProvider mMapViewerResourceProviderMarker, int markeRoute) {
 
         if (flaggW == 0) {
@@ -59,22 +61,24 @@ public class MarkerByCategory extends Activity {
     public void ExcutToiletPoint(NMapOverlayManager mOverlayManagerMarker, NMapViewerResourceProvider mMapViewerResourceProviderMarker, int markeRoute){
 
 
+
+
         if (flaggT == 0) {
-            for(int i = 0; i <120 ; i = i +4) {
-                a = Double.parseDouble(wifi.Toilet[i+3]);
-                b = Double.parseDouble(wifi.Toilet[i+2]);
-                testFordata[j] = new NMapPOIdata(30, mMapViewerResourceProviderMarker);
-                testFordata[j].beginPOIdata(30);
-                testFordata[j].addPOIitem(a, b, wifi.Toilet[i] + wifi.Toilet[i + 1], markeRoute, 0);
-                testFordata[j].endPOIdata();
-                testPOIdataOverlay = mOverlayManagerMarker.createPOIdataOverlay(testFordata[j], null);
+            for(int i = 0; i <148 ; i = i +4) {
+                a = Double.parseDouble(searchResultListToilet.get(i+2).toString());
+                b = Double.parseDouble(searchResultListToilet.get(i+3).toString());
+                toilet[j] = new NMapPOIdata(40, mMapViewerResourceProviderMarker);
+                toilet[j].beginPOIdata(40);
+                toilet[j].addPOIitem(a, b, searchResultListToilet.get(i).toString() + searchResultListToilet.get(i+1).toString(), markeRoute, 0);
+                toilet[j].endPOIdata();
+                testPOIdataOverlay = mOverlayManagerMarker.createPOIdataOverlay(toilet[j], null);
                 j++;
             }
             flaggT = 1;
         }else if(flaggT == 1) {
-            for(int i =0 ; i < 30 ; i++) {
-                testFordata[i].removeAllPOIdata();
-                testPOIdataOverlay = mOverlayManagerMarker.createPOIdataOverlay(testFordata[i], null);
+            for(int i =0 ; i < 37 ; i++) {
+                toilet[i].removeAllPOIdata();
+                testPOIdataOverlay = mOverlayManagerMarker.createPOIdataOverlay(toilet[i], null);
             }
             flaggT = 0;
             j = 0;

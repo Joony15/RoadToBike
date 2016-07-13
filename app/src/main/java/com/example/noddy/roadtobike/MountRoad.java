@@ -17,7 +17,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.nhn.android.maps.NMapActivity;
 import com.nhn.android.maps.NMapCompassManager;
 import com.nhn.android.maps.NMapController;
@@ -66,20 +65,16 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     public NMapPOIdataOverlay poiDataOverlay;
     public int markerId;
     MarkerByCategory mMountMarker;
-    DbForPublicDataParsing mDbForPublicDataParsing;
-
     //마커 이미지 테스트
     Bitmap markerBitmap,bitmapWifi;
     Drawable markerTest,markerWifi;
     Intent intentMount, intent;
-
     private TextView textview;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mount_road);
-
         /*for Map APi*/
         Mapcontainer = (LinearLayout) findViewById(R.id.mountRoad_Btn);
         mMapView = new NMapView(this);
@@ -91,7 +86,6 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         mOverlayManager = new NMapOverlayManager(this, mMapView,
                 mMapViewerResourceProvider);
         mMapView.setOnMapStateChangeListener(this);
-
         /*
         * poiData.addPOIitem(127.0630205, 37.5091300, "위치1", markerTest, 0);
         * markerTest이 변수가 들어가는 부분인 아마 마커관련된거 같음
@@ -114,11 +108,9 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         //현재 나의 위치 받아오기
         myLocation = new NGeoPoint();
         myLocation = mMapLocationManager.getMyLocation();
-        //mDbForPublicDataParsing = new DbForPublicDataParsing();
-        //mDbForPublicDataParsing.StartParsingFromPublic();
         //카테고리별 마커 설정위한 클래스 호출
         mMountMarker = new MarkerByCategory();
-       /*MountRoute에서 마커를 위해 불러온 함수*/
+        /*MountRoute에서 마커를 위해 불러온 함수*/
         mMountRoute.ExcuteMountPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
         /*Button MountRoadpage*/
         Wifi_Btn = (ImageButton) findViewById(R.id.wifi_btn);
@@ -173,8 +165,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
                 ////여기다 버튼 이벤트 코딩
                 textview.setText("공용 화장실");
                 Toast.makeText(MountRoad.this, "(테스트)화장실정상적인 클릭.", Toast.LENGTH_SHORT).show();
-                Intent iintent = new Intent(this, DbForPublicDataParsing.class);
-                startActivity(iintent);
+                mMountMarker.ExcutToiletPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
                 break;
             case R.id.bike_btn:
                 //여기다 버튼 이벤트 코딩
@@ -319,7 +310,6 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
             /*위치변경될 때 이벤트 발생*/
             if (mMapController != null) {
                 mMapController.animateTo(myLocation);
-                //Toast.makeText(MountRoad.this, "(테스트)위치 변화.", Toast.LENGTH_SHORT).show();
                 mMountRoute.CheckMylocationFromMarker(mOverlayManager,mMapViewerResourceProvider,markerTest, distanceFromMarker());
             }
             return true;
