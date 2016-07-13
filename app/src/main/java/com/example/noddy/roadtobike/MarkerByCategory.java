@@ -11,9 +11,13 @@ import com.nhn.android.maps.overlay.NMapPOIdata;
 import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
 import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by noddy on 2016-07-11.
  */
+
 public class MarkerByCategory extends Activity {
 
     private int flaggW = 0,flaggT = 0,flaggB = 0;
@@ -22,14 +26,12 @@ public class MarkerByCategory extends Activity {
     public NMapPOIdata toiletFordata[] = new NMapPOIdata[40];
     public NMapPOIdataOverlay testPOIdataOverlay;
     public DbForPublicDataParsing wifi = new DbForPublicDataParsing();
-    public DbForPublicDataParsing bike = new DbForPublicDataParsing();
 
+    public String[] MarkerBike = new String[50];//자전거인증소 정보 들어갈 배열
     public int j = 0;
     public double a = 0 , b = 0;
-
+    public static List<String> searchResultList = new ArrayList<String>();
     public void ExcutWifiPoint(NMapOverlayManager mOverlayManagerMarker, NMapViewerResourceProvider mMapViewerResourceProviderMarker, int markeRoute) {
-
-
 
         if (flaggW == 0) {
             for(int i = 0; i <120 ; i = i +4) {
@@ -80,16 +82,14 @@ public class MarkerByCategory extends Activity {
     }
     public void ExcutBikePoint(NMapOverlayManager mOverlayManagerMarker, NMapViewerResourceProvider mMapViewerResourceProviderMarker, int markeRoute){
 
-        Toast.makeText(MarkerByCategory.this, "(테스트)화장실정상적인 클릭."+bike.Bike[0], Toast.LENGTH_SHORT).show();
-
-        /*
         if (flaggB == 0) {
             for(int i = 0; i < 20 ; i = i +4) {
-                a = Double.parseDouble(wifi.Bike[i+3]);
-                b = Double.parseDouble(wifi.Bike[i+2]);
+
+                a = Double.parseDouble(searchResultList.get(i+2).toString());
+                b = Double.parseDouble(searchResultList.get(i+3).toString());
                 bikeFordata[j] = new NMapPOIdata(6, mMapViewerResourceProviderMarker);
                 bikeFordata[j].beginPOIdata(6);
-                bikeFordata[j].addPOIitem(a, b, wifi.Bike[i] + wifi.Bike[i + 1], markeRoute, 0);
+                bikeFordata[j].addPOIitem(a, b, searchResultList.get(i).toString() + searchResultList.get(i+1).toString(), markeRoute, 0);
                 bikeFordata[j].endPOIdata();
                 testPOIdataOverlay = mOverlayManagerMarker.createPOIdataOverlay(bikeFordata[j], null);
                 j++;
@@ -102,7 +102,7 @@ public class MarkerByCategory extends Activity {
             }
             flaggB = 0;
             j = 0;
-        }*/
+        }
     }
 
 }

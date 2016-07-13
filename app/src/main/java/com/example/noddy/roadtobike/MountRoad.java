@@ -41,7 +41,6 @@ import com.nhn.android.mapviewer.overlay.NMapPathDataOverlay;
 public class MountRoad extends NMapActivity implements View.OnClickListener,
         NMapView.OnMapStateChangeListener, NMapView.OnMapViewTouchEventListener, NMapOverlayManager.OnCalloutOverlayListener {
 
-
     private static final String CLIENT_ID = "QYEl8bJjw912O8_ZRLJ9";
     private NMapView mMapView = null;
     private NMapController mMapController;
@@ -115,11 +114,11 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         //현재 나의 위치 받아오기
         myLocation = new NGeoPoint();
         myLocation = mMapLocationManager.getMyLocation();
+        //mDbForPublicDataParsing = new DbForPublicDataParsing();
+        //mDbForPublicDataParsing.StartParsingFromPublic();
         //카테고리별 마커 설정위한 클래스 호출
-        mDbForPublicDataParsing = new DbForPublicDataParsing();
-        mDbForPublicDataParsing.DbForPublicDataParsin();
         mMountMarker = new MarkerByCategory();
-        /*MountRoute에서 마커를 위해 불러온 함수*/
+       /*MountRoute에서 마커를 위해 불러온 함수*/
         mMountRoute.ExcuteMountPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
         /*Button MountRoadpage*/
         Wifi_Btn = (ImageButton) findViewById(R.id.wifi_btn);
@@ -135,39 +134,30 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         Back_Btn.setOnClickListener(this);
         Camera_Btn.setOnClickListener(this);
         textview = (TextView)findViewById(R.id.textview1);
-
-
     }
 
     public void onMapInitHandler(NMapView mapView, NMapError errorInfo) {
         if (errorInfo == null) { // success
             //Toast.makeText(MountRoad.this, "(테스트)지도 초기화 성공.", Toast.LENGTH_SHORT).show();
-
             mMapController.setMapCenter(new NGeoPoint(128.2599500, 37.8741320), 11);
-
         } else { // fail
             // Toast.makeText(MountRoad.this, "(테스트)지도 초기화 실패.", Toast.LENGTH_SHORT).show();
         }
     }
-
     @Override
     public void onMapCenterChange(NMapView nMapView, NGeoPoint nGeoPoint) {
-
     }
 
     @Override
     public void onMapCenterChangeFine(NMapView nMapView) {
-
     }
 
     @Override
     public void onZoomLevelChange(NMapView nMapView, int i) {
-
     }
 
     @Override
     public void onAnimationStateChange(NMapView nMapView, int i, int i1) {
-
     }
 
     @Override
@@ -186,14 +176,12 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
                 Intent iintent = new Intent(this, DbForPublicDataParsing.class);
                 startActivity(iintent);
                 break;
-
             case R.id.bike_btn:
                 //여기다 버튼 이벤트 코딩
                 textview.setText("자전거 대여소");
                 Toast.makeText(MountRoad.this, "(테스트)전기시간정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 mMountMarker.ExcutBikePoint(mOverlayManager,mMapViewerResourceProvider,markerId);
                 break;
-
             case R.id.gps_btn:
                 //여기다 버튼 이벤트 코딩
                 textview.setText("현재위치");
@@ -204,20 +192,17 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
                     stopMyLocation();
                     flagForLocation = 1;
                 }else if(flagForLocation == 1){
-
                     Toast.makeText(MountRoad.this, "(테스트)현재 위치 설정..", Toast.LENGTH_SHORT).show();
                     startMyLocation();
                     flagForLocation = 0;
                 }
                 break;
-
             case R.id.back_btn:
                 //여기다 버튼 이벤트 코딩
                 Toast.makeText(MountRoad.this, "(테스트)뒤로가기정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 intentMount =new Intent(this, MainActivity.class);
                 startActivity(intentMount);
                 break;
-
             case R.id.camera_btn:
                 //여기다 버튼 이벤트 코딩
                 Toast.makeText(MountRoad.this, "(테스트)카메라정상적인 클릭.", Toast.LENGTH_SHORT).show();
@@ -232,12 +217,10 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         {
             disMylocationFromMarker = myLocation.getDistance(mMountRoute.forCheckedPoin[mMountRoute.FlagForMarker],myLocation);
             //Toast.makeText(MountRoad.this, "(테스트)거리계산성공.", Toast.LENGTH_SHORT).show();
-
         }
         else
         {
             //Toast.makeText(MountRoad.this, "(테스트)거리계산실패.", Toast.LENGTH_SHORT).show();
-
         }
         return disMylocationFromMarker;
     }
@@ -330,7 +313,6 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
 
     /* MyLocation Listener */
     private final NMapLocationManager.OnLocationChangeListener onMyLocationChangeListener = new NMapLocationManager.OnLocationChangeListener() {
-
         @Override
         public boolean onLocationChanged(NMapLocationManager locationManager, NGeoPoint myLocation) {
 
@@ -342,21 +324,14 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
             }
             return true;
         }
-
         @Override
         public void onLocationUpdateTimeout(NMapLocationManager locationManager) {
-
             Toast.makeText(MountRoad.this, "Your current location is temporarily unavailable.", Toast.LENGTH_LONG).show();
         }
-
         @Override
         public void onLocationUnavailableArea(NMapLocationManager locationManager, NGeoPoint myLocation) {
-
             Toast.makeText(MountRoad.this, "Your current location is unavailable area.", Toast.LENGTH_LONG).show();
-
             stopMyLocation();
         }
-
     };
-
 }

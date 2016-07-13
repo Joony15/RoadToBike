@@ -9,8 +9,11 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class DBHelper extends SQLiteOpenHelper{
 
-    public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version){
-        super(context, name, factory, version);
+    public SQLiteDatabase msqlite;
+
+    public DBHelper(Context context){
+        super(context, "H_Wifi.db", null, 1);
+        msqlite = this.getWritableDatabase();
 
     }
 
