@@ -1,5 +1,7 @@
 package com.example.noddy.roadtobike;
 /*산악도로 페이지*/
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -92,7 +94,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         mMapViewerResourceProvider = new NMapViewerResourceProvider(this);
         mOverlayManager = new NMapOverlayManager(this, mMapView,
                 mMapViewerResourceProvider);
-
+        mOverlayManager.setOnCalloutOverlayListener(this);
         mMapView.setOnMapStateChangeListener(this);
         /*
         * poiData.addPOIitem(127.0630205, 37.5091300, "위치1", markerTest, 0);
@@ -299,45 +301,45 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
             }
         }
     }
-    @Override
-    public NMapCalloutOverlay onCreateCalloutOverlay(NMapOverlay nMapOverlay, NMapOverlayItem nMapOverlayItem, Rect rect) {
+    public void showLoginDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("위치정보");
+        builder.setCancelable(false);
 
+        builder.setNeutralButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "CANCEL 눌러짐", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-
-
-        return null;
+        builder.create();
+        builder.show();
     }
-
     @Override
     public void onLongPress(NMapView nMapView, MotionEvent motionEvent) {
 
     }
-
     @Override
     public void onLongPressCanceled(NMapView nMapView) {
 
     }
-
     @Override
     public void onTouchDown(NMapView nMapView, MotionEvent motionEvent) {
 
     }
-
     @Override
     public void onTouchUp(NMapView nMapView, MotionEvent motionEvent) {
 
     }
-
     @Override
     public void onScroll(NMapView nMapView, MotionEvent motionEvent, MotionEvent motionEvent1) {
 
     }
-
     @Override
     public void onSingleTapUp(NMapView nMapView, MotionEvent motionEvent) {
 
     }
-
     /* MyLocation Listener */
     private final NMapLocationManager.OnLocationChangeListener onMyLocationChangeListener = new NMapLocationManager.OnLocationChangeListener() {
         @Override
@@ -360,4 +362,11 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
             stopMyLocation();
         }
     };
+    /*오버레이가 클릭되었을 때의 이벤트 */
+    @Override
+    public NMapCalloutOverlay onCreateCalloutOverlay(NMapOverlay arg0,
+                                                     NMapOverlayItem arg1, Rect arg2) {
+        showLoginDialog();
+        return null;
+    }
 }

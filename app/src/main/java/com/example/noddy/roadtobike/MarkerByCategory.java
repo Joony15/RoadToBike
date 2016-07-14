@@ -65,7 +65,6 @@ public class MarkerByCategory extends Activity {
             j = 0;
         }
     }
-
     public void ExcutToiletPoint(NMapOverlayManager mOverlayManagerMarker, NMapViewerResourceProvider mMapViewerResourceProviderMarker, Drawable markeRoute){
         if (flaggT == 0) {
             for(int i = 0; i <148 ; i = i +4) {
@@ -105,7 +104,6 @@ public class MarkerByCategory extends Activity {
                 j++;
             }
             testPOIdataOverlay.showAllPOIdata(4);
-            mOverlayManagerMarker.setOnCalloutOverlayViewListener(onCalloutOverlayViewListener);
             j = 0;
             flaggB = 1;
         }else if(flaggB == 1) {
@@ -117,31 +115,7 @@ public class MarkerByCategory extends Activity {
             j = 0;
         }
     }
-    private final NMapOverlayManager.OnCalloutOverlayViewListener onCalloutOverlayViewListener = new NMapOverlayManager.OnCalloutOverlayViewListener() {
 
-        @Override
-        public View onCreateCalloutOverlayView(NMapOverlay itemOverlay, NMapOverlayItem overlayItem, Rect itemBounds) {
-
-            if (overlayItem != null) {
-                // [TEST] 말풍선 오버레이를 뷰로 설정함
-                String title = overlayItem.getTitle();
-                if (title != null && title.length() > 5) {
-                    return new NMapCalloutCustomOverlayView(MarkerByCategory.this, itemOverlay, overlayItem, itemBounds);
-                }
-            }
-
-            // null을 반환하면 말풍선 오버레이를 표시하지 않음
-            return null;
-        }
-
-    };
-    public void showLoginDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Select");
-        builder.setCancelable(false);
-        builder.create();
-        builder.show();
-    }
 
 
 }
