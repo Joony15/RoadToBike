@@ -5,15 +5,18 @@ package com.example.noddy.roadtobike;
 *
 *
 */
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -22,7 +25,7 @@ import java.io.InputStream;
 import java.io.StringReader;
 import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, NumberPicker.OnValueChangeListener {
 
     public static String[] Wifi = new String[150];//무료와이파이 정보 들어갈 배열
     public static String[] Bike = new String[50];//자전거인증소 정보 들어갈 배열
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public MarkerByCategory mMarkerByCategory;
     Button MountGo;
     Button SeaGo;
+    private  int pickRoute = 0;
     //Button WhereGo;
     int i =0;
     int j =0;
@@ -182,16 +186,76 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(v.getId() == R.id.mountchoice_btn)
         {
-
-          intent =new Intent(this, MountRoad.class);
-          startActivity(intent);
+            show();
+            //intent =new Intent(this, MountRoad.class);
+            //startActivity(intent);
 
         }
         else if(v.getId() == R.id.seachoice_btn)
         {
-          intent = new Intent(this, SeaRoad.class);
-          startActivity(intent);
+            switch(pickRoute) {
+                case 0:
+                    intent = new Intent(this, MountRoad.class);
+                    startActivity(intent);
+                    break;
+                case 1:
+                    intent = new Intent(this, SeaRoad.class);
+                    startActivity(intent);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+            }
         }
+
+
+    }
+    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+
+        Log.i("value is",""+newVal);
+
+    }
+    public void show()
+    {
+
+        final Dialog d = new Dialog(MainActivity.this);
+        d.setTitle("경로선택");
+        d.setContentView(R.layout.activity_forpicker);
+        Button b1 = (Button) d.findViewById(R.id.button11);
+        Button b2 = (Button) d.findViewById(R.id.button21);
+        final NumberPicker np = (NumberPicker) d.findViewById(R.id.numberPicker1);
+        np.setMaxValue(7); // max value 100
+        np.setMinValue(1);   // min value 0
+        //순서대로 0~7까지 값이 적용됨
+        np.setDisplayedValues( new String[] { "대한민국최고의 해안도로", "설악 그란폰도 라이딩코스", "몰라","어디할지","안정했어","뭐할지 정해서 알려주삼","!!!!!!!!끝" } );
+        np.setWrapSelectorWheel(false);
+        np.setOnValueChangedListener(this);
+        b1.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                //getValue를 톨해 적용된 갑을 불러옴
+                pickRoute = np.getValue();
+                d.dismiss();
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                d.cancel(); // dismiss the dialog
+            }
+        });
+        d.show();
 
 
     }
