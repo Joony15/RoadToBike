@@ -1,5 +1,7 @@
 package com.example.noddy.roadtobike;
 /*해안가도로 페이지*/
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -237,8 +239,9 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
             case R.id.seaback_btn:
                 //여기다 버튼 이벤트 코딩
                 Toast.makeText(SeaRoad.this, "(테스트)뒤로가기정상적인 클릭.", Toast.LENGTH_SHORT).show();
-                intentSea =new Intent(this, MainActivity.class);
-                startActivity(intentSea);
+                //intentSea =new Intent(this, MainActivity.class);
+                //startActivity(intentSea);
+                this.onBackPressed();
                 break;
 
             case R.id.seacamera_btn:
@@ -317,12 +320,22 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
             }
         }
     }
+    public void showLoginDialog(NMapOverlayItem messageForMarker) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("위치정보");
+        builder.setMessage(messageForMarker.getTitle());
 
-    @Override
-    public NMapCalloutOverlay onCreateCalloutOverlay(NMapOverlay nMapOverlay, NMapOverlayItem nMapOverlayItem, Rect rect) {
-        return null;
+        builder.setCancelable(false);
+
+        builder.setNeutralButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        builder.create();
+        builder.show();
     }
-
     @Override
     public void onLongPress(NMapView nMapView, MotionEvent motionEvent) {
 
@@ -376,11 +389,16 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
 
         @Override
         public void onLocationUnavailableArea(NMapLocationManager locationManager, NGeoPoint myLocation) {
-
             Toast.makeText(SeaRoad.this, "Your current location is unavailable area.", Toast.LENGTH_LONG).show();
-
             stopMyLocation();
         }
 
     };
+    /*오버레이가 클릭되었을 때의 이벤트 */
+    @Override
+    public NMapCalloutOverlay onCreateCalloutOverlay(NMapOverlay arg0,
+                                                     NMapOverlayItem arg1, Rect arg2) {
+        showLoginDialog(arg1);
+        return null;
+    }
 }

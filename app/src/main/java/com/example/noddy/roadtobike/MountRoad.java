@@ -225,8 +225,9 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
             case R.id.back_btn:
                 //여기다 버튼 이벤트 코딩
                 Toast.makeText(MountRoad.this, "(테스트)뒤로가기정상적인 클릭.", Toast.LENGTH_SHORT).show();
-                intentMount =new Intent(this, MainActivity.class);
-                startActivity(intentMount);
+                //intentMount =new Intent(this, MainActivity.class);
+                //startActivity(intentMount);
+                this.onBackPressed();
                 break;
             case R.id.camera_btn:
                 //여기다 버튼 이벤트 코딩
@@ -301,15 +302,15 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
             }
         }
     }
-    public void showLoginDialog() {
+    public void showLoginDialog(NMapOverlayItem messageForMarker) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("위치정보");
+        builder.setMessage(messageForMarker.getTitle());
         builder.setCancelable(false);
 
         builder.setNeutralButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(), "CANCEL 눌러짐", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -366,7 +367,8 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     @Override
     public NMapCalloutOverlay onCreateCalloutOverlay(NMapOverlay arg0,
                                                      NMapOverlayItem arg1, Rect arg2) {
-        showLoginDialog();
+        showLoginDialog(arg1);
         return null;
     }
+
 }
