@@ -10,9 +10,9 @@
     <LinearLayout
         android:orientation = "horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.91"
-        android:background="#e6e6e6">
+        android:layout_height="51dp"
+        android:background="#00ff0000"
+        android:layout_weight="0.05">
         <ImageButton
             android:id="@+id/back_btn"
             android:layout_width="match_parent"
@@ -22,21 +22,62 @@
             android:layout_alignParentRight="true"
             android:src = "@drawable/back3"
             android:layout_weight="1"
+            android:background="@android:color/transparent"
             android:layout_gravity="left"/>
-        <LinearLayout
-            android:orientation = "horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.91"
-            android:background="#e6e6e6">
-            <TextView
-                android:id="@+id/textview1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:typeface="monospace"
-                android:textStyle="bold"/>
-        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="151dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                android:src="@drawable/wifi_show"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView2"
+                android:src="@drawable/bike_show"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView3"
+                android:src="@drawable/toilet_show"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView8"
+                android:src="@drawable/loca"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
         <ImageButton
             android:id="@+id/camera_btn"
             android:layout_width="match_parent"
@@ -46,7 +87,9 @@
             android:layout_alignParentRight="true"
             android:src = "@drawable/camera"
             android:layout_weight="1"
+            android:background="@android:color/transparent"
             android:layout_gravity="right" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -54,15 +97,15 @@
         android:orientation = "vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.2">
+        android:layout_weight="3">
     </LinearLayout>
     <LinearLayout
         android:id="@+id/mountRoad_Map"
         android:orientation = "horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.9"
-        android:background="#e6e6e6">
+        android:layout_height="50dp"
+        android:background="#00ff0000"
+        android:layout_weight="0.05">
         <ImageButton
             android:id="@+id/wifi_btn"
             android:layout_width="0dp"
@@ -71,7 +114,10 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:src = "@drawable/wifi3"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:adjustViewBounds="false" />
+
         <ImageButton
             android:id="@+id/toilet_btn"
             android:layout_width="0dp"
@@ -79,6 +125,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/actbutton"
             android:src = "@drawable/toilet"
+            android:background="@android:color/transparent"
             android:layout_weight="1"/>
         <ImageButton
             android:id="@+id/bike_btn"
@@ -86,6 +133,7 @@
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/actbutton"
+            android:background="@android:color/transparent"
             android:src = "@drawable/bike"
             android:layout_weight="1" />
         <ImageButton
@@ -94,6 +142,7 @@
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/actbutton"
+            android:background="@android:color/transparent"
             android:src = "@drawable/gps"
             android:layout_weight="1" />
     </LinearLayout>

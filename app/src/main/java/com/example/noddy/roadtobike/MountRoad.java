@@ -14,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,6 +57,11 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     private ImageButton Gps_Btn;
     private ImageButton Back_Btn;
     private ImageButton Camera_Btn;
+    private ImageView imageView;
+    private ImageView imageView2;
+    private ImageView imageView3;
+    private ImageView imageView8;
+
     private int flagForLocation = 0;
     //마커 경로 테스트용도
     private double disMylocationFromMarker = 0;
@@ -113,6 +119,10 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         /*MountRoute에서 마커를 위해 불러온 함수*/
         mMountRoute.ExcuteMountPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
         /*Button MountRoadpage*/
+        imageView = (ImageView) findViewById(R.id.imageView);
+        imageView2 = (ImageView) findViewById(R.id.imageView2);
+        imageView3 = (ImageView) findViewById(R.id.imageView3);
+        imageView8 = (ImageView) findViewById(R.id.imageView8);
         Wifi_Btn = (ImageButton) findViewById(R.id.wifi_btn);
         Toilet_Btn = (ImageButton) findViewById(R.id.toilet_btn);
         Bike_Btn = (ImageButton) findViewById(R.id.bike_btn);
@@ -125,7 +135,11 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         Gps_Btn.setOnClickListener(this);
         Back_Btn.setOnClickListener(this);
         Camera_Btn.setOnClickListener(this);
-        textview = (TextView)findViewById(R.id.textview1);
+        imageView.setVisibility(View.GONE);
+        imageView2.setVisibility(View.GONE);
+        imageView3.setVisibility(View.GONE);
+        imageView8.setVisibility(View.GONE);
+
     }
 
     public void onMapInitHandler(NMapView mapView, NMapError errorInfo) {
@@ -157,25 +171,37 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
 
         switch(v.getId()) {
             case R.id.wifi_btn:
-                textview.setText("무료 와이파이");
-                //여기다 버튼 이벤트 코딩
-                 mMountMarker.ExcutWifiPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
-                 break;
+
+                imageView2.setVisibility(View.GONE);
+                imageView3.setVisibility(View.GONE);
+                imageView8.setVisibility(View.GONE);
+                imageView.setVisibility(View.VISIBLE);                //여기다 버튼 이벤트 코딩
+                mMountMarker.ExcutWifiPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
+                break;
             case R.id.toilet_btn:
                 ////여기다 버튼 이벤트 코딩
-                textview.setText("공용 화장실");
+                imageView.setVisibility(View.GONE);
+                imageView2.setVisibility(View.GONE);
+                imageView8.setVisibility(View.GONE);
+                imageView3.setVisibility(View.VISIBLE);
                 Toast.makeText(MountRoad.this, "(테스트)화장실정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 mMountMarker.ExcutToiletPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
                 break;
             case R.id.bike_btn:
                 //여기다 버튼 이벤트 코딩
-                textview.setText("자전거 대여소");
+                imageView.setVisibility(View.GONE);
+                imageView3.setVisibility(View.GONE);
+                imageView8.setVisibility(View.GONE);
+                imageView2.setVisibility(View.VISIBLE);
                 Toast.makeText(MountRoad.this, "(테스트)전기시간정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 mMountMarker.ExcutBikePoint(mOverlayManager,mMapViewerResourceProvider,markerId);
                 break;
             case R.id.gps_btn:
                 //여기다 버튼 이벤트 코딩
-                textview.setText("현재위치");
+                imageView.setVisibility(View.GONE);
+                imageView2.setVisibility(View.GONE);
+                imageView3.setVisibility(View.GONE);
+                imageView8.setVisibility(View.VISIBLE);
                 Toast.makeText(MountRoad.this, "(테스트)현재위치정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 if(flagForLocation == 0)
                 {

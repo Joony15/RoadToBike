@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,6 +56,10 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
     private ImageButton Gps_Btn;
     private ImageButton Back_Btn;
     private ImageButton Camera_Btn;
+    private ImageView imageView4;
+    private ImageView imageView5;
+    private ImageView imageView6;
+    private ImageView imageView7;
 
 
     //마커 경로 테스트용도
@@ -117,6 +122,10 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         mSeaRoute.ExcuteSeaPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
 
         /*Button MountRoadpage*/
+        imageView4 = (ImageView) findViewById(R.id.imageView4);
+        imageView5 = (ImageView) findViewById(R.id.imageView5);
+        imageView6 = (ImageView) findViewById(R.id.imageView6);
+        imageView7 = (ImageView) findViewById(R.id.imageView7);
         Wifi_Btn = (ImageButton) findViewById(R.id.seawifi_btn);
         Toilet_Btn = (ImageButton) findViewById(R.id.seatoilet_btn);
         Bike_Btn = (ImageButton) findViewById(R.id.seabike_btn);
@@ -129,8 +138,10 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         Gps_Btn.setOnClickListener(this);
         Back_Btn.setOnClickListener(this);
         Camera_Btn.setOnClickListener(this);
-        textview = (TextView)findViewById(R.id.textview2);
-
+        imageView4.setVisibility(View.GONE);
+        imageView5.setVisibility(View.GONE);
+        imageView6.setVisibility(View.GONE);
+        imageView7.setVisibility(View.GONE);
     }
 
     public void onMapInitHandler(NMapView mapView, NMapError errorInfo) {
@@ -170,19 +181,28 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         switch(v.getId()) {
             case R.id.seawifi_btn:
                 //여기다 버튼 이벤트 코딩
-                textview.setText("무료 와이파이");
+                imageView5.setVisibility(View.GONE);
+                imageView6.setVisibility(View.GONE);
+                imageView7.setVisibility(View.GONE);
+                imageView4.setVisibility(View.VISIBLE);
                 mSeaMarker.ExcutWifiPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
 
                 break;
             case R.id.seatoilet_btn:
                 ////여기다 버튼 이벤트 코딩
-                textview.setText("공용 화장실");
+                imageView4.setVisibility(View.GONE);
+                imageView5.setVisibility(View.GONE);
+                imageView7.setVisibility(View.GONE);
+                imageView6.setVisibility(View.VISIBLE);
                 mSeaMarker.ExcutToiletPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
                 break;
 
             case R.id.seabike_btn:
                 //여기다 버튼 이벤트 코딩
-                textview.setText("자전거 대여소");
+                imageView4.setVisibility(View.GONE);
+                imageView6.setVisibility(View.GONE);
+                imageView7.setVisibility(View.GONE);
+                imageView5.setVisibility(View.VISIBLE);
                 Toast.makeText(SeaRoad.this, "(테스트)전기시간정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 mSeaMarker.ExcutBikePoint(mOverlayManager,mMapViewerResourceProvider,markerId);
 
@@ -190,7 +210,10 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
 
             case R.id.seagps_btn:
                 //여기다 버튼 이벤트 코딩
-                textview.setText("현재위치");
+                imageView4.setVisibility(View.GONE);
+                imageView5.setVisibility(View.GONE);
+                imageView6.setVisibility(View.GONE);
+                imageView7.setVisibility(View.VISIBLE);
                 Toast.makeText(SeaRoad.this, "(테스트)현재위치정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 if(flagForLocationSea== 0)
                 {
