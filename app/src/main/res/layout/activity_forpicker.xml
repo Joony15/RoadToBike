@@ -14,19 +14,19 @@
         android:id="@+id/button21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/numberPicker1"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="98dp"
+        android:text="취소"
+        android:layout_below="@+id/numberPicker1"
         android:layout_toRightOf="@+id/numberPicker1"
-        android:text="취소" />
+        android:layout_toEndOf="@+id/numberPicker1" />
 
     <Button
         android:id="@+id/button11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button21"
-        android:layout_alignBottom="@+id/button21"
+        android:text="결정"
+        android:layout_alignTop="@+id/button21"
         android:layout_toLeftOf="@+id/numberPicker1"
-        android:text="결정" />
+        android:layout_toStartOf="@+id/numberPicker1" />
 
 </RelativeLayout>

@@ -93,6 +93,7 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         mMapViewerResourceProvider = new NMapViewerResourceProvider(this);
         mOverlayManager = new NMapOverlayManager(this, mMapView,
                 mMapViewerResourceProvider);
+        mOverlayManager.setOnCalloutOverlayListener(this);
         mMapView.setOnMapStateChangeListener(this);
 
         /*
@@ -101,7 +102,7 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         * 아래보이는 두줄이용해서 markerTest에 getResources(),R.drawable.ic_net_wif를 이용해서
         * 변수에 내가 원하는 이미지를 넣음
         * */
-        markerBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.ic_net_wif);
+        markerBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.ic_pin_06_r);
         markerTest = new BitmapDrawable(markerBitmap);
         bitmapWifi = BitmapFactory.decodeResource(getResources(),R.drawable.wifi5);
         markerWifi = new BitmapDrawable(bitmapWifi);

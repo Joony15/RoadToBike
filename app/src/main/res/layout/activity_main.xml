@@ -32,10 +32,10 @@
               android:id="@+id/mountchoice_btn"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:drawableLeft="@drawable/mountain2"
+              android:drawableLeft="@drawable/route"
               android:layout_centerVertical="true"
               android:layout_toRightOf="@+id/actbutton"
-              android:text="MountRoad"
+              android:text="route choice"
               android:typeface="monospace"
               android:textStyle="bold"
               android:textSize="25dp"/>
@@ -52,13 +52,13 @@
             android:id="@+id/seachoice_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:drawableLeft="@drawable/wave1"
+            android:drawableLeft="@drawable/start"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/actbutton"
-            android:text="SeaRoad"
+            android:text="Start"
             android:typeface="monospace"
             android:textStyle="bold"
-            android:textSize="25dp"/>
+            android:textSize="30dp"/>
     </LinearLayout>
 
 </LinearLayout>

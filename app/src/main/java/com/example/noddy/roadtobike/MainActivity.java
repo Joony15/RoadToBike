@@ -6,8 +6,10 @@ package com.example.noddy.roadtobike;
 *
 */
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -195,14 +197,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             switch(pickRoute) {
                 case 0:
-                    intent = new Intent(this, MountRoad.class);
-                    startActivity(intent);
                     break;
                 case 1:
                     intent = new Intent(this, SeaRoad.class);
                     startActivity(intent);
                     break;
                 case 2:
+                    intent = new Intent(this, MountRoad.class);
+                    startActivity(intent);
                     break;
                 case 3:
                     break;
@@ -214,15 +216,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case 7:
                     break;
+                default:
+                    WarningPick();
+
             }
+
         }
 
 
     }
+
     public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 
         Log.i("value is",""+newVal);
 
+    }
+    public void WarningPick() {
+        AlertDialog.Builder mustPick = new AlertDialog.Builder(this);
+        mustPick.setTitle("잠신만요!");
+        mustPick.setMessage("경로를 선택하시지 않았습니다.");
+        mustPick.setCancelable(false);
+
+        mustPick.setNeutralButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        mustPick.create();
+        mustPick.show();
     }
     public void show()
     {
@@ -236,7 +258,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         np.setMaxValue(7); // max value 100
         np.setMinValue(1);   // min value 0
         //순서대로 0~7까지 값이 적용됨
-        np.setDisplayedValues( new String[] { "대한민국최고의 해안도로", "설악 그란폰도 라이딩코스", "몰라","어디할지","안정했어","뭐할지 정해서 알려주삼","!!!!!!!!끝" } );
+        np.setDisplayedValues( new String[] { "대한민국최고의 해안도로", "설악 그란폰도 라이딩코스", "추후 공지..","추후 공지..","추후 공지..","추후 공지..","추후 공지.." } );
         np.setWrapSelectorWheel(false);
         np.setOnValueChangedListener(this);
         b1.setOnClickListener(new View.OnClickListener()
