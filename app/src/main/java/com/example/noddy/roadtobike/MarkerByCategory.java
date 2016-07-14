@@ -41,7 +41,7 @@ public class MarkerByCategory extends Activity {
     public static List<String> searchResultList = new ArrayList<String>();
     public static List<String> searchResultListToilet = new ArrayList<String>();
 
-    public void ExcutWifiPoint(NMapOverlayManager mOverlayManagerMarker, NMapViewerResourceProvider mMapViewerResourceProviderMarker, int markeRoute) {
+    public void ExcutWifiPoint(NMapOverlayManager mOverlayManagerMarker, NMapViewerResourceProvider mMapViewerResourceProviderMarker, Drawable markeRoute) {
         if (flaggW == 0) {
             for(int i = 0; i <120 ; i = i +4) {
                 a = Double.parseDouble(wifi.Wifi[i+3]);
@@ -66,7 +66,7 @@ public class MarkerByCategory extends Activity {
         }
     }
 
-    public void ExcutToiletPoint(NMapOverlayManager mOverlayManagerMarker, NMapViewerResourceProvider mMapViewerResourceProviderMarker, int markeRoute){
+    public void ExcutToiletPoint(NMapOverlayManager mOverlayManagerMarker, NMapViewerResourceProvider mMapViewerResourceProviderMarker, Drawable markeRoute){
         if (flaggT == 0) {
             for(int i = 0; i <148 ; i = i +4) {
                 a = Double.parseDouble(searchResultListToilet.get(i+2).toString());
@@ -90,7 +90,7 @@ public class MarkerByCategory extends Activity {
             j = 0;
         }
     }
-    public void ExcutBikePoint(NMapOverlayManager mOverlayManagerMarker, NMapViewerResourceProvider mMapViewerResourceProviderMarker, int markeRoute){
+    public void ExcutBikePoint(NMapOverlayManager mOverlayManagerMarker, NMapViewerResourceProvider mMapViewerResourceProviderMarker, Drawable markeRoute){
 
         if (flaggB == 0) {
             for(int i = 0; i < 20 ; i = i +4) {

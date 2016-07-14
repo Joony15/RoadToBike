@@ -71,8 +71,8 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
     public int markerId;
     MarkerByCategory mSeaMarker;
     /*마커 이미지 테스트 */
-    Bitmap markerBitmap;
-    Drawable markerTest;
+    Bitmap markerBitmap,bitmapWifi, bitmapToilet, bitmapBike;
+    Drawable markerTest,markerWifi, markerToilet, markerBike;
     Intent intentSea;
     int flagForLocationSea = 0;
     private TextView textview;
@@ -101,6 +101,12 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         * */
         markerBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.ic_net_wif);
         markerTest = new BitmapDrawable(markerBitmap);
+        bitmapWifi = BitmapFactory.decodeResource(getResources(),R.drawable.wifi5);
+        markerWifi = new BitmapDrawable(bitmapWifi);
+        bitmapToilet = BitmapFactory.decodeResource(getResources(),R.drawable.toilet1);
+        markerToilet = new BitmapDrawable(bitmapToilet);
+        bitmapBike = BitmapFactory.decodeResource(getResources(),R.drawable.bike1);
+        markerBike = new BitmapDrawable(bitmapBike);
         markerId = NMapPOIflagType.PIN;
 
         /*my location*/
@@ -185,7 +191,7 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
                 imageView6.setVisibility(View.GONE);
                 imageView7.setVisibility(View.GONE);
                 imageView4.setVisibility(View.VISIBLE);
-                mSeaMarker.ExcutWifiPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
+                mSeaMarker.ExcutWifiPoint(mOverlayManager,mMapViewerResourceProvider,markerWifi);
 
                 break;
             case R.id.seatoilet_btn:
@@ -194,7 +200,7 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
                 imageView5.setVisibility(View.GONE);
                 imageView7.setVisibility(View.GONE);
                 imageView6.setVisibility(View.VISIBLE);
-                mSeaMarker.ExcutToiletPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
+                mSeaMarker.ExcutToiletPoint(mOverlayManager,mMapViewerResourceProvider,markerToilet);
                 break;
 
             case R.id.seabike_btn:
@@ -204,7 +210,7 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
                 imageView7.setVisibility(View.GONE);
                 imageView5.setVisibility(View.VISIBLE);
                 Toast.makeText(SeaRoad.this, "(테스트)전기시간정상적인 클릭.", Toast.LENGTH_SHORT).show();
-                mSeaMarker.ExcutBikePoint(mOverlayManager,mMapViewerResourceProvider,markerId);
+                mSeaMarker.ExcutBikePoint(mOverlayManager,mMapViewerResourceProvider,markerBike);
 
                 break;
 

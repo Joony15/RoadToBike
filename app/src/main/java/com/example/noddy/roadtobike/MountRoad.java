@@ -73,8 +73,8 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     public int markerId;
     MarkerByCategory mMountMarker;
     //마커 이미지 테스트
-    Bitmap markerBitmap,bitmapWifi;
-    Drawable markerTest,markerWifi;
+    Bitmap markerBitmap,bitmapWifi, bitmapToilet, bitmapBike;
+    Drawable markerTest,markerWifi, markerToilet, markerBike;
     Intent intentMount, intent;
     private TextView textview;
 
@@ -101,9 +101,13 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         * 변수에 내가 원하는 이미지를 넣음
         */
         markerBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.ic_pin_06_r);
-        bitmapWifi = BitmapFactory.decodeResource(getResources(),R.drawable.wifi3);
         markerTest = new BitmapDrawable(markerBitmap);
+        bitmapWifi = BitmapFactory.decodeResource(getResources(),R.drawable.wifi5);
         markerWifi = new BitmapDrawable(bitmapWifi);
+        bitmapToilet = BitmapFactory.decodeResource(getResources(),R.drawable.toilet1);
+        markerToilet = new BitmapDrawable(bitmapToilet);
+        bitmapBike = BitmapFactory.decodeResource(getResources(),R.drawable.bike1);
+        markerBike = new BitmapDrawable(bitmapBike);
         markerId = NMapPOIflagType.PIN;
         /*my location*/
         mMapLocationManager = new NMapLocationManager(this);
@@ -178,7 +182,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
                 imageView3.setVisibility(View.GONE);
                 imageView8.setVisibility(View.GONE);
                 imageView.setVisibility(View.VISIBLE);                //여기다 버튼 이벤트 코딩
-                mMountMarker.ExcutWifiPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
+                mMountMarker.ExcutWifiPoint(mOverlayManager,mMapViewerResourceProvider,markerWifi);
                 break;
             case R.id.toilet_btn:
                 ////여기다 버튼 이벤트 코딩
@@ -187,7 +191,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
                 imageView8.setVisibility(View.GONE);
                 imageView3.setVisibility(View.VISIBLE);
                 Toast.makeText(MountRoad.this, "(테스트)화장실정상적인 클릭.", Toast.LENGTH_SHORT).show();
-                mMountMarker.ExcutToiletPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
+                mMountMarker.ExcutToiletPoint(mOverlayManager,mMapViewerResourceProvider,markerToilet);
                 break;
             case R.id.bike_btn:
                 //여기다 버튼 이벤트 코딩
@@ -196,7 +200,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
                 imageView8.setVisibility(View.GONE);
                 imageView2.setVisibility(View.VISIBLE);
                 Toast.makeText(MountRoad.this, "(테스트)전기시간정상적인 클릭.", Toast.LENGTH_SHORT).show();
-                mMountMarker.ExcutBikePoint(mOverlayManager,mMapViewerResourceProvider,markerId);
+                mMountMarker.ExcutBikePoint(mOverlayManager,mMapViewerResourceProvider,markerBike);
                 break;
             case R.id.gps_btn:
                 //여기다 버튼 이벤트 코딩

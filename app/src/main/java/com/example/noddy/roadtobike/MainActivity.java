@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // roadtobike 이미지 띄우기 코드
         Drawable drawable = getResources().getDrawable(
-                R.drawable.roadtobike);
+                R.drawable.rtb);
         ImageView imageView = (ImageView) findViewById(R.id.imageView01);
         imageView.setImageDrawable(drawable);
 
