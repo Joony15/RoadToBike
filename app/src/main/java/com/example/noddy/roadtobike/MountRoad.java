@@ -192,7 +192,6 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
                 imageView2.setVisibility(View.GONE);
                 imageView8.setVisibility(View.GONE);
                 imageView3.setVisibility(View.VISIBLE);
-                Toast.makeText(MountRoad.this, "(테스트)화장실정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 mMountMarker.ExcutToiletPoint(mOverlayManager,mMapViewerResourceProvider,markerToilet);
                 break;
             case R.id.bike_btn:
@@ -201,7 +200,6 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
                 imageView3.setVisibility(View.GONE);
                 imageView8.setVisibility(View.GONE);
                 imageView2.setVisibility(View.VISIBLE);
-                Toast.makeText(MountRoad.this, "(테스트)전기시간정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 mMountMarker.ExcutBikePoint(mOverlayManager,mMapViewerResourceProvider,markerBike);
                 break;
             case R.id.gps_btn:
@@ -210,28 +208,23 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
                 imageView2.setVisibility(View.GONE);
                 imageView3.setVisibility(View.GONE);
                 imageView8.setVisibility(View.VISIBLE);
-                Toast.makeText(MountRoad.this, "(테스트)현재위치정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 if(flagForLocation == 0)
                 {
-                    Toast.makeText(MountRoad.this, "(테스트)현재 위치 해제.", Toast.LENGTH_SHORT).show();
                     stopMyLocation();
                     flagForLocation = 1;
                 }else if(flagForLocation == 1){
-                    Toast.makeText(MountRoad.this, "(테스트)현재 위치 설정..", Toast.LENGTH_SHORT).show();
                     startMyLocation();
                     flagForLocation = 0;
                 }
                 break;
             case R.id.back_btn:
                 //여기다 버튼 이벤트 코딩
-                Toast.makeText(MountRoad.this, "(테스트)뒤로가기정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 //intentMount =new Intent(this, MainActivity.class);
                 //startActivity(intentMount);
                 this.onBackPressed();
                 break;
             case R.id.camera_btn:
                 //여기다 버튼 이벤트 코딩
-                Toast.makeText(MountRoad.this, "(테스트)카메라정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent, 0);
                 break;
@@ -242,11 +235,9 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         if(myLocation != null)
         {
             disMylocationFromMarker = myLocation.getDistance(mMountRoute.forCheckedPoin[mMountRoute.FlagForMarker],myLocation);
-            //Toast.makeText(MountRoad.this, "(테스트)거리계산성공.", Toast.LENGTH_SHORT).show();
         }
         else
         {
-            //Toast.makeText(MountRoad.this, "(테스트)거리계산실패.", Toast.LENGTH_SHORT).show();
         }
         return disMylocationFromMarker;
     }

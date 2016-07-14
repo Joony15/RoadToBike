@@ -5,11 +5,11 @@ package com.example.noddy.roadtobike;
 *
 *
 */
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +20,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 
+import com.nhn.android.maps.NMapOverlayItem;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -28,19 +30,17 @@ import java.io.StringReader;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NumberPicker.OnValueChangeListener {
-
     public static String[] Wifi = new String[150];//무료와이파이 정보 들어갈 배열
     public static String[] Bike = new String[50];//자전거인증소 정보 들어갈 배열
     static String[] Toilet = new String[2000];//공중화장실 정보 들어갈 배열
     public MarkerByCategory mMarkerByCategory;
     Button MountGo;
     Button SeaGo;
-    private  int pickRoute = 0;
+    private  int pickRoute;
     //Button WhereGo;
     int i =0;
     int j =0;
     int z =0;//i,j,z 변수는 위에서 선언한 배열에 차례차례 들어가도록 선언한 변수
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -70,13 +70,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             is.read(buffer);
             is.close();
             result=new String(buffer,"utf-8");
-
             XmlPullParserFactory factory=XmlPullParserFactory.newInstance();
             factory.setNamespaceAware(true); //xml 네임스페이스 지원 여부 설정
             XmlPullParser xpp=factory.newPullParser();
             xpp.setInput(new StringReader(result));
             int eventType=xpp.getEventType();
-
             boolean bSet=false;
             while(eventType!=XmlPullParser.END_DOCUMENT){
                 if(eventType== XmlPullParser.START_TAG){
@@ -108,13 +106,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             is.read(buffer);
             is.close();
             result1=new String(buffer,"utf-8");
-
             XmlPullParserFactory factory=XmlPullParserFactory.newInstance();
             factory.setNamespaceAware(true); //xml 네임스페이스 지원 여부 설정
             XmlPullParser xpp=factory.newPullParser();
             xpp.setInput(new StringReader(result1));
             int eventType=xpp.getEventType();
-
             boolean bSet=false;
             while(eventType!=XmlPullParser.END_DOCUMENT){
                 if(eventType== XmlPullParser.START_TAG){
@@ -168,24 +164,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }else if(eventType==XmlPullParser.END_TAG);
                 eventType=xpp.next();
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         mMarkerByCategory = new MarkerByCategory();
         mMarkerByCategory.searchResultList.addAll(Arrays.asList(Bike));
         mMarkerByCategory.searchResultListToilet.addAll(Arrays.asList(Toilet));
-
-
     }
     /* for Button event when it is pushed */
     @Override
     public void onClick(View v) {
-
         /* for choice menu */
         Intent intent;
-
         if(v.getId() == R.id.mountchoice_btn)
         {
             show();
@@ -196,14 +186,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if(v.getId() == R.id.seachoice_btn)
         {
             switch(pickRoute) {
-                case 0:
-                    break;
                 case 1:
                     intent = new Intent(this, SeaRoad.class);
                     startActivity(intent);
                     break;
                 case 2:
                     intent = new Intent(this, MountRoad.class);
+
                     startActivity(intent);
                     break;
                 case 3:
@@ -216,35 +205,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case 7:
                     break;
+                case 8:
+                    break;
                 default:
                     WarningPick();
 
             }
-
         }
-
-
     }
-
     public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-
         Log.i("value is",""+newVal);
-
-    }
-    public void WarningPick() {
-        AlertDialog.Builder mustPick = new AlertDialog.Builder(this);
-        mustPick.setTitle("잠신만요!");
-        mustPick.setMessage("경로를 선택하시지 않았습니다.");
-        mustPick.setCancelable(false);
-
-        mustPick.setNeutralButton("확인", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-
-        mustPick.create();
-        mustPick.show();
     }
     public void show()
     {
@@ -258,7 +228,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         np.setMaxValue(7); // max value 100
         np.setMinValue(1);   // min value 0
         //순서대로 0~7까지 값이 적용됨
-        np.setDisplayedValues( new String[] { "대한민국최고의 해안도로", "설악 그란폰도 라이딩코스", "추후 공지..","추후 공지..","추후 공지..","추후 공지..","추후 공지.." } );
+        np.setDisplayedValues( new String[] { "대한민국최고의 해안도로", "설악 그란폰도 라이딩코스", "몰라","어디할지","안정했어","뭐할지 정해서 알려주삼","!!!!!!!!끝" } );
         np.setWrapSelectorWheel(false);
         np.setOnValueChangedListener(this);
         b1.setOnClickListener(new View.OnClickListener()
@@ -278,8 +248,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         d.show();
-
-
+    }
+    public void WarningPick() {
+        AlertDialog.Builder mustPick = new AlertDialog.Builder(this);
+        mustPick.setTitle("잠신만요!");
+        mustPick.setMessage("경로를 선택하시지 않았습니다.");
+        mustPick.setCancelable(false);
+        mustPick.setNeutralButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        mustPick.create();
+        mustPick.show();
     }
 
 }

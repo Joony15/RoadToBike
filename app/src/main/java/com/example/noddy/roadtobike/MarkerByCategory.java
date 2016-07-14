@@ -93,7 +93,6 @@ public class MarkerByCategory extends Activity {
 
         if (flaggB == 0) {
             for(int i = 0; i < 20 ; i = i +4) {
-
                 a = Double.parseDouble(searchResultList.get(i+2).toString());
                 b = Double.parseDouble(searchResultList.get(i+3).toString());
                 bikeFordata[j] = new NMapPOIdata(6, mMapViewerResourceProviderMarker);

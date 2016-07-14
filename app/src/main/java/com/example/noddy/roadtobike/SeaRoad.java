@@ -163,27 +163,18 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
             //Toast.makeText(MountRoad.this, "(테스트)지도 초기화 실패.", Toast.LENGTH_SHORT).show();
         }
     }
-
     @Override
     public void onMapCenterChange(NMapView nMapView, NGeoPoint nGeoPoint) {
-
     }
-
     @Override
     public void onMapCenterChangeFine(NMapView nMapView) {
-
     }
-
     @Override
     public void onZoomLevelChange(NMapView nMapView, int i) {
-
     }
-
     @Override
     public void onAnimationStateChange(NMapView nMapView, int i, int i1) {
-
     }
-
     @Override
     public void onClick(View v) {
 
@@ -195,7 +186,6 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
                 imageView7.setVisibility(View.GONE);
                 imageView4.setVisibility(View.VISIBLE);
                 mSeaMarker.ExcutWifiPoint(mOverlayManager,mMapViewerResourceProvider,markerWifi);
-
                 break;
             case R.id.seatoilet_btn:
                 ////여기다 버튼 이벤트 코딩
@@ -205,33 +195,26 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
                 imageView6.setVisibility(View.VISIBLE);
                 mSeaMarker.ExcutToiletPoint(mOverlayManager,mMapViewerResourceProvider,markerToilet);
                 break;
-
             case R.id.seabike_btn:
                 //여기다 버튼 이벤트 코딩
                 imageView4.setVisibility(View.GONE);
                 imageView6.setVisibility(View.GONE);
                 imageView7.setVisibility(View.GONE);
                 imageView5.setVisibility(View.VISIBLE);
-                Toast.makeText(SeaRoad.this, "(테스트)전기시간정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 mSeaMarker.ExcutBikePoint(mOverlayManager,mMapViewerResourceProvider,markerBike);
-
                 break;
-
             case R.id.seagps_btn:
                 //여기다 버튼 이벤트 코딩
                 imageView4.setVisibility(View.GONE);
                 imageView5.setVisibility(View.GONE);
                 imageView6.setVisibility(View.GONE);
                 imageView7.setVisibility(View.VISIBLE);
-                Toast.makeText(SeaRoad.this, "(테스트)현재위치정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 if(flagForLocationSea== 0)
                 {
-                    Toast.makeText(SeaRoad.this, "(테스트)현재 위치 해제.", Toast.LENGTH_SHORT).show();
                     stopMyLocation();
                     flagForLocationSea = 1;
                 }else if(flagForLocationSea == 1){
 
-                    Toast.makeText(SeaRoad.this, "(테스트)현재 위치 설정..", Toast.LENGTH_SHORT).show();
                     startMyLocation();
                     flagForLocationSea = 0;
                 }
@@ -239,7 +222,6 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
 
             case R.id.seaback_btn:
                 //여기다 버튼 이벤트 코딩
-                Toast.makeText(SeaRoad.this, "(테스트)뒤로가기정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 //intentSea =new Intent(this, MainActivity.class);
                 //startActivity(intentSea);
                 this.onBackPressed();
@@ -247,7 +229,6 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
 
             case R.id.seacamera_btn:
                 //여기다 버튼 이벤트 코딩
-                Toast.makeText(SeaRoad.this, "(테스트)카메라정상적인 클릭.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent, 0);
                 break;
@@ -258,13 +239,9 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         if(myLocationSea != null)
         {
             disMylocationFromMarkerSea = myLocationSea.getDistance(mSeaRoute.forCheckedPoinSea[mSeaRoute.FlagForMarkerSea],myLocationSea);
-            //Toast.makeText(SeaRoad.this, "(테스트)거리계산성공.", Toast.LENGTH_SHORT).show();
-
         }
         else
         {
-            //Toast.makeText(SeaRoad.this, "(테스트)거리계산실패.", Toast.LENGTH_SHORT).show();
-
         }
         return disMylocationFromMarkerSea;
     }
@@ -305,7 +282,6 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
             }
         }
     }
-
     private void stopMyLocation() {
         if (mMyLocationOverlay != null) {
             mMapLocationManager.disableMyLocation();
@@ -333,7 +309,6 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
             public void onClick(DialogInterface dialog, int which) {
             }
         });
-
         builder.create();
         builder.show();
     }
@@ -377,7 +352,6 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
                 mMapController.animateTo(myLocation);
                 //Toast.makeText(SeaRoad.this, "(테스트)위치 변화.", Toast.LENGTH_SHORT).show();
                 mSeaRoute.CheckMylocationFromMarkerSea(mOverlayManager,mMapViewerResourceProvider,markerTest, distanceFromMarkerSea());
-
             }
             return true;
         }
@@ -387,7 +361,6 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
 
             Toast.makeText(SeaRoad.this, "Your current location is temporarily unavailable.", Toast.LENGTH_LONG).show();
         }
-
         @Override
         public void onLocationUnavailableArea(NMapLocationManager locationManager, NGeoPoint myLocation) {
             Toast.makeText(SeaRoad.this, "Your current location is unavailable area.", Toast.LENGTH_LONG).show();
