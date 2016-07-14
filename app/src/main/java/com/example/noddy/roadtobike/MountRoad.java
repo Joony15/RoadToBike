@@ -51,6 +51,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     NMapPOIdataOverlay.OnStateChangeListener onPOIdataStateChangeListener;
     NMapViewerResourceProvider mMapViewerResourceProvider = null;
     MountRoute mMountRoute;
+
     private ImageButton Wifi_Btn;
     private ImageButton Toilet_Btn;
     private ImageButton Bike_Btn;
@@ -91,6 +92,7 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
         mMapViewerResourceProvider = new NMapViewerResourceProvider(this);
         mOverlayManager = new NMapOverlayManager(this, mMapView,
                 mMapViewerResourceProvider);
+
         mMapView.setOnMapStateChangeListener(this);
         /*
         * poiData.addPOIitem(127.0630205, 37.5091300, "위치1", markerTest, 0);
@@ -295,6 +297,10 @@ public class MountRoad extends NMapActivity implements View.OnClickListener,
     }
     @Override
     public NMapCalloutOverlay onCreateCalloutOverlay(NMapOverlay nMapOverlay, NMapOverlayItem nMapOverlayItem, Rect rect) {
+
+
+
+
         return null;
     }
 

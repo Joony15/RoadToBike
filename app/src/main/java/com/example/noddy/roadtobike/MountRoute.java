@@ -83,6 +83,8 @@ public class MountRoute {
 
         /*경로 라인 두께*/
         pathLineStyle.setLineWidth(14);
+        //pathLineStyle.setFillColor(0xD4E632,0);
+        pathLineStyle.setLineColor(0x006600,500);
         pathData.setPathLineStyle(pathLineStyle);
         NMapPathDataOverlay pathDataOverlay = mOverlayManager.createPathDataOverlay(pathData);
         pathDataOverlay.showAllPathData(7);
@@ -112,6 +114,7 @@ public class MountRoute {
         forCheckedPoin[5] = new NGeoPoint(128.4081958, 37.9634730);
         forCheckedPoin[6] = new NGeoPoint(128.3375473, 37.9441227);
         forCheckedPoin[7] = new NGeoPoint(128.2629901, 37.8808571);
+
 
     }
 

@@ -82,6 +82,8 @@ public class SeaRoute {
 
         /*경로 라인 두께*/
         pathLineStyle.setLineWidth(14);
+        pathLineStyle.setLineColor(0x0000e6,500);
+
         pathData.setPathLineStyle(pathLineStyle);
         NMapPathDataOverlay pathDataOverlay = mOverlayManager.createPathDataOverlay(pathData);
         //pathDataOverlay.showAllPathData(12);
