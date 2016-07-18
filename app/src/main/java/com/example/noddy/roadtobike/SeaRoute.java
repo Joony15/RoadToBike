@@ -90,7 +90,7 @@ public class SeaRoute {
 
     }
     /*주요 경로 마커*/
-    public void ExcuteSeaPoint(NMapOverlayManager mOverlayManager, NMapViewerResourceProvider mMapViewerResourceProvider, int markeRoute)
+    public void ExcuteSeaPoint(NMapOverlayManager mOverlayManager, NMapViewerResourceProvider mMapViewerResourceProvider, Drawable markeRoute)
     {
 
         seaPoiData = new NMapPOIdata(12, mMapViewerResourceProvider);

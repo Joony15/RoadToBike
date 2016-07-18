@@ -90,7 +90,7 @@ public class MountRoute {
         pathDataOverlay.showAllPathData(7);
     }
 
-    public void ExcuteMountPoint(NMapOverlayManager mOverlayManager, NMapViewerResourceProvider mMapViewerResourceProvider, int markeRoute)
+    public void ExcuteMountPoint(NMapOverlayManager mOverlayManager, NMapViewerResourceProvider mMapViewerResourceProvider, Drawable markeRoute)
     {
 
         /*주요 경로 마커*/

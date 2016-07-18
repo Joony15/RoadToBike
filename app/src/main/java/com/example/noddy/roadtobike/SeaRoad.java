@@ -73,8 +73,8 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
     public int markerId;
     MarkerByCategory mSeaMarker;
     /*마커 이미지 테스트 */
-    Bitmap markerBitmap,bitmapWifi, bitmapToilet, bitmapBike;
-    Drawable markerTest,markerWifi, markerToilet, markerBike;
+    Bitmap markerBitmap,bitmapWifi, bitmapToilet, bitmapBike,bitmapNormal;
+    Drawable markerTest,markerWifi, markerToilet, markerBike,markernormal;
     Intent intentSea;
     int flagForLocationSea = 0;
     private TextView textview;
@@ -104,11 +104,13 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         * */
         markerBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.ic_pin_06_r);
         markerTest = new BitmapDrawable(markerBitmap);
-        bitmapWifi = BitmapFactory.decodeResource(getResources(),R.drawable.wifi5);
+        bitmapNormal = BitmapFactory.decodeResource(getResources(),R.drawable.ic_pin_06_real);
+        markernormal = new BitmapDrawable(bitmapNormal);
+        bitmapWifi = BitmapFactory.decodeResource(getResources(),R.drawable.ic_wifi_real);
         markerWifi = new BitmapDrawable(bitmapWifi);
-        bitmapToilet = BitmapFactory.decodeResource(getResources(),R.drawable.toilet1);
+        bitmapToilet = BitmapFactory.decodeResource(getResources(),R.drawable.ic_toilet_real);
         markerToilet = new BitmapDrawable(bitmapToilet);
-        bitmapBike = BitmapFactory.decodeResource(getResources(),R.drawable.bike1);
+        bitmapBike = BitmapFactory.decodeResource(getResources(),R.drawable.ic_bike_real);
         markerBike = new BitmapDrawable(bitmapBike);
         markerId = NMapPOIflagType.PIN;
 
@@ -128,7 +130,7 @@ public class SeaRoad extends NMapActivity implements View.OnClickListener,
         //카테고리별 마커 설정위한 클래스 호출
         mSeaMarker = new MarkerByCategory();
         /*SeaRoute에서 마커를 위해 불러온 함수*/
-        mSeaRoute.ExcuteSeaPoint(mOverlayManager,mMapViewerResourceProvider,markerId);
+        mSeaRoute.ExcuteSeaPoint(mOverlayManager,mMapViewerResourceProvider,markernormal);
 
         /*Button MountRoadpage*/
         imageView4 = (ImageView) findViewById(R.id.imageView4);

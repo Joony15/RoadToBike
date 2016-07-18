@@ -1,32 +1,56 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:orientation = "vertical">
 
-    <NumberPicker
-        android:id="@+id/numberPicker1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.4">
+        >
 
-    <Button
-        android:id="@+id/button21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="98dp"
-        android:text="취소"
-        android:layout_below="@+id/numberPicker1"
-        android:layout_toRightOf="@+id/numberPicker1"
-        android:layout_toEndOf="@+id/numberPicker1" />
+        <NumberPicker
+            android:id="@+id/numberPicker1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            />
 
-    <Button
-        android:id="@+id/button11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="결정"
-        android:layout_alignTop="@+id/button21"
-        android:layout_toLeftOf="@+id/numberPicker1"
-        android:layout_toStartOf="@+id/numberPicker1" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation = "horizontal"
+        android:layout_weight="0.6">
 
-</RelativeLayout>
+            <Button
+                android:id="@+id/button21"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:typeface="monospace"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:text="Cancel"
+                android:layout_below="@+id/numberPicker1"
+                android:layout_toRightOf="@+id/numberPicker1"
+                android:layout_toEndOf="@+id/numberPicker1"
+                android:layout_weight="5"/>
+
+
+            <Button
+                android:id="@+id/button11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:typeface="monospace"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:text="OK"
+                android:layout_alignTop="@+id/button21"
+                android:layout_toLeftOf="@+id/numberPicker1"
+                android:layout_toStartOf="@+id/numberPicker1"
+                android:layout_weight="5"/>
+
+
+    </LinearLayout>
+</LinearLayout>

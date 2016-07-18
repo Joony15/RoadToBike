@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public MarkerByCategory mMarkerByCategory;
     Button MountGo;
     Button SeaGo;
-    private  int pickRoute;
+    private  int pickRoute = 0;
     //Button WhereGo;
     int i =0;
     int j =0;
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-
+        pickRoute = 0;
         // roadtobike 이미지 띄우기 코드
         Drawable drawable = getResources().getDrawable(
                 R.drawable.rtb);
@@ -205,7 +205,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case 7:
                     break;
-                case 8:
+                case 0:
+                    WarningPick();
                     break;
                 default:
                     WarningPick();
@@ -228,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         np.setMaxValue(7); // max value 100
         np.setMinValue(1);   // min value 0
         //순서대로 0~7까지 값이 적용됨
-        np.setDisplayedValues( new String[] { "대한민국최고의 해안도로", "설악 그란폰도 라이딩코스", "몰라","어디할지","안정했어","뭐할지 정해서 알려주삼","!!!!!!!!끝" } );
+        np.setDisplayedValues( new String[] { "대한민국최고의 해안도로", "설악 그란폰도 라이딩코스", "업데이트 예정","업데이트 예정","업데이트 예정","업데이트 예정","업데이트 예정" } );
         np.setWrapSelectorWheel(false);
         np.setOnValueChangedListener(this);
         b1.setOnClickListener(new View.OnClickListener()
@@ -251,7 +252,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     public void WarningPick() {
         AlertDialog.Builder mustPick = new AlertDialog.Builder(this);
-        mustPick.setTitle("잠신만요!");
+        mustPick.setTitle("잠시만요!");
         mustPick.setMessage("경로를 선택하시지 않았습니다.");
         mustPick.setCancelable(false);
         mustPick.setNeutralButton("확인", new DialogInterface.OnClickListener() {
